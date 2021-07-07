@@ -5,10 +5,14 @@ import  Home  from '../screens/Home'
 
 const Stack = createStackNavigator();
 
-const AppNavigation = () => {
+const AppLogedIn = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+       screenOptions={({ route, navigation }) => ({
+        headerShown: false,
+      })}
+      >
         <Stack.Screen
           name="Home"
           component={Home}
@@ -18,4 +22,4 @@ const AppNavigation = () => {
   );
 };
 
-export default AppNavigation;
+export default AppLogedIn;
