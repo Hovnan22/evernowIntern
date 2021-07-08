@@ -4,13 +4,14 @@ import {
     Text,
 } from "react-native"
 
-const Home = () => {
+
+const HomeScreen = () => {
     return (
         <View>
-            <Text style={ {color: 'red'}}>Home</Text>
+            <Text style={ {color: 'red'}}>HomeScreen</Text>
         </View>
     );
 }
 
-export default Home;
+export default HomeScreen;
 
