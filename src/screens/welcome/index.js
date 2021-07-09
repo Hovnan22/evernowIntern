@@ -2,12 +2,14 @@ import React from 'react';
 import {
     View,
     Text,
-    Image,
-    Button,
     StyleSheet,
-    TouchableOpacity,
 } from "react-native";
-import { AppImage } from '../../components/ui';
+import LinearGradient from 'react-native-linear-gradient';
+
+import {
+    AppImage,
+    AppButton,
+} from '../../components/ui';
 import icon from "../../../src/assets/images/logo.png";
 import whiteBg from "../../../src/assets/images/wilcomeWhiteBg.png";
 import gradientBg from "../../../src/assets/images/welcomeBg.png";
@@ -27,11 +29,19 @@ const WelcomeScreen = () => {
                 <View style={styles.buttonBg}>
                     <AppImage width={320} height={340} url={whiteBg} />
                     <View style={styles.buttons}>
-                        <TouchableOpacity onPress={() => navigation.navigate("RecoveryPassword")}>
-                            <Text >
-                                common.forgetPassword
-                            </Text>
-                        </TouchableOpacity>
+                        <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#9AD1FF', '#0075C8']} style={styles.gradientButton}>
+                            <AppButton
+                                name={'Login'}
+                                style={styles.login}
+                                press={() => { console.log(987) }}
+                            />
+                        </LinearGradient>
+
+                            <AppButton
+                                name={'registration'}
+                                style={styles.registration}
+                                press={() => { console.log(999) }}
+                            />
                     </View>
                 </View>
 
@@ -41,12 +51,34 @@ const WelcomeScreen = () => {
 }
 
 const styles = StyleSheet.create({
+
     buttons: {
         zIndex: 20,
         position: "absolute",
         bottom: 0
     },
-
+    gradientButton: {
+        borderRadius: 10,
+    },
+    login: {
+        width: 260,
+        borderRadius: 10,
+        height: 50,
+        backgroundColor: 'rgba(0,0,0,0)',
+        flex: 1,
+        alignItems: "center",
+        justifyContent: 'center',
+    },
+    registration: {
+        backgroundColor: 'rgba(0,0,0,0)',
+        width: 260,
+        height: 50,
+        justifyContent: 'center',
+        flex: 1,
+        alignItems: 'center',
+        borderRadius: 10,
+        // borderColor:
+    },
     container: {
         width: '100%',
         height: '100%',
