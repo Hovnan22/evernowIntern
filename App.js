@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import {  ApolloProvider } from "@apollo/client";
 
 import  { Store }  from "./src/config";
-import { AppNavigationContainer } from "./src/navigation";
+import AppNavigationContainer from "./src/navigation";
 import { ApolloServices } from "./src/services";
 
 const App = () => (
