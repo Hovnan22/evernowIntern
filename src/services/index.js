@@ -1,1 +1,1 @@
-export { default as AppApolloProvider} from "./apollo";
+export { default as ApolloServices} from "./apollo";
