@@ -1,48 +1,67 @@
 import React from "react";
 import {
 	View,
+	Text,
 	StyleSheet,
 } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 
 import {
+	AppIcon,
 	AppImage,
 	AppButton,
 } from "../../components/ui";
 import icon from "../../../src/assets/images/logo.png";
 import whiteBg from "../../../src/assets/images/wilcomeWhiteBg.png";
 import gradientBg from "../../../src/assets/images/welcomeBg.png";
+import {
+	LOGIN_SCREEN,
+	REGISTRATION_SCREEN,
+} from "../../navigation/screens";
 
-
-
-const WelcomeScreen = () => (
+const WelcomeScreen = ({navigation}) => (
 	<View style={styles.container}>
+		{/* <AppIcon
+			style={styles.rotate}
+			icon={"google"}
+			width={32}
+			height={32}
+		/> */}
 		<View style={styles.gradienBg}>
 			<AppImage width={"100%"} height={430} url={gradientBg} />
 		</View>
 		<View style={styles.logo}>
 			<AppImage width={200} height={200} url={icon} />
 		</View>
+
 		<View style={styles.buttonBlock}>
 			<View style={styles.buttonBg}>
-				<AppImage width={320} height={340} url={whiteBg} />
+				<View style={styles.socialLogin}>
+					<Text>Login via social network</Text>
+					<View style={styles.socialIcons}>
+						<Text style={{fontSize: 25}}>go</Text>
+						<Text style={{fontSize: 25}}>fb</Text>
+						<Text style={{fontSize: 25}}>vk</Text>
+					</View>
+				</View>
+				<AppImage width={320} height={320} url={whiteBg} />
 				<View style={styles.buttons}>
 					<LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={["#9AD1FF", "#0075C8"]} style={styles.gradientButton}>
 						<AppButton
 							name={"Login"}
 							style={styles.login}
-							press={() => { console.log(987); }}
+							color="white"
+							press={() => { navigation.navigate( LOGIN_SCREEN ); }}
 						/>
 					</LinearGradient>
-
 					<AppButton
-						name={"registration"}
+						name={"Registration"}
+						color={"#18a0fb"}
 						style={styles.registration}
-						press={() => { console.log(999); }}
+						press={() => { navigation.navigate(REGISTRATION_SCREEN); }}
 					/>
 				</View>
 			</View>
-
 		</View>
 	</View>
 );
@@ -50,12 +69,21 @@ const WelcomeScreen = () => (
 const styles = StyleSheet.create({
 
 	buttons: {
-		zIndex: 20,
+		zIndex: 1,
 		position: "absolute",
 		bottom: 0,
 	},
 	gradientButton: {
 		borderRadius: 10,
+	},
+	socialLogin: {
+		top: 120,
+		zIndex: 1,
+	},
+	socialIcons: {
+		flexDirection: "row",
+		justifyContent: "space-between",
+		fontSize: 25,
 	},
 	login: {
 		width: 260,
@@ -70,11 +98,14 @@ const styles = StyleSheet.create({
 		backgroundColor: "rgba(0,0,0,0)",
 		width: 260,
 		height: 50,
+		marginBottom: 30,
 		justifyContent: "center",
 		flex: 1,
 		alignItems: "center",
 		borderRadius: 10,
-		// borderColor:
+		borderColor: "#18a0fb",
+		borderWidth: 2,
+		marginTop: 20,
 	},
 	container: {
 		width: "100%",
@@ -93,7 +124,6 @@ const styles = StyleSheet.create({
 	gradienBg: {
 		position: "absolute",
 		bottom: -15,
-		// top: 0,
 		right: 0,
 		left: 0,
 	},

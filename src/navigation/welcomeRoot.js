@@ -1,6 +1,7 @@
 import  React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import  WelcomeScreen  from "../screens/welcome";
+
+import { welcomeRootScreens } from "./screensArray";
 
 const Stack = createStackNavigator();
 
@@ -10,10 +11,12 @@ const WelcomeRoot = () => (
 			headerShown: false,
 		})}
 	>
-		<Stack.Screen
-			name="Welcome"
-			component={WelcomeScreen}
-		/>
+		{ welcomeRootScreens.map(screen => (
+			<Stack.Screen
+				{...screen}
+				key={screen.name}
+			/>
+		))}
 	</Stack.Navigator>
 );
 
