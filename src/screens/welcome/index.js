@@ -6,6 +6,7 @@ import {
 import LinearGradient from "react-native-linear-gradient";
 
 import {
+	AppIcon,
 	AppImage,
 	AppButton,
 } from "../../components/ui";
@@ -15,8 +16,15 @@ import gradientBg from "../../../src/assets/images/welcomeBg.png";
 
 
 
+
 const WelcomeScreen = () => (
 	<View style={styles.container}>
+		<AppIcon
+			style={styles.rotate}
+			icon={"google"}
+			width={32}
+			height={32}
+		/>
 		<View style={styles.gradienBg}>
 			<AppImage width={"100%"} height={430} url={gradientBg} />
 		</View>
@@ -26,6 +34,7 @@ const WelcomeScreen = () => (
 		<View style={styles.buttonBlock}>
 			<View style={styles.buttonBg}>
 				<AppImage width={320} height={340} url={whiteBg} />
+
 				<View style={styles.buttons}>
 					<LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={["#9AD1FF", "#0075C8"]} style={styles.gradientButton}>
 						<AppButton

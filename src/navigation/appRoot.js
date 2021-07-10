@@ -1,6 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { HomeScreen } from "../screens";
+
+import { homeRootScreens } from "./screensArray";
 
 const Stack = createStackNavigator();
 const AppRoot = () => (
@@ -8,7 +9,11 @@ const AppRoot = () => (
 		screenOptions={() => ({
 			headerShown: false,
 		})}>
-		<Stack.Screen name="HomeScreen" component={HomeScreen} />
+		{homeRootScreens.map(screen => (
+			<Stack.Screen {...screen}
+				key={screen.name}
+			/>
+		))}
 	</Stack.Navigator>
 );
 
