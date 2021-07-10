@@ -7,7 +7,7 @@ import {
 
 const HomeScreen = () => (
 	<View>
-		<Text style={{color: "black"}}>HomeScreen</Text>
+		<Text style={{color: "red"}}>HomeScreen</Text>
 	</View>
 );
 
