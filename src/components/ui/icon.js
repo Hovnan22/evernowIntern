@@ -2,18 +2,18 @@ import React, {Suspense} from "react";
 import {ActivityIndicator, StyleSheet} from "react-native";
 
 const components = {
-	"facebook": React.lazy(() => import("../../assets/icons/fb.svg")),
-	"google": React.lazy(() => import("../../assets/icons/fb.svg")),
-	"vk": React.lazy(() => import("../../assets/icons/fb.svg")),
+	"google": React.lazy(() => import("../../assets/icons/google.svg")),
+	"fb": React.lazy(() => import("../../assets/icons/fb.svg")),
+	"vk": React.lazy(() => import("../../assets/icons/vk.svg")),
+	"back": React.lazy(() => import("../../assets/icons/back.svg")),
 };
 
 const RenderIcon = ({icon, style, ...props}) => {
 	const TagName = components[icon];
-	console.log(TagName, "TagName", icon);
 	if (TagName) {
 		return (
 			<Suspense fallback={<ActivityIndicator size="small" color="#888888" />}>
-				<TagName />
+				<TagName {...props} style={[styles.container, style]} />
 			</Suspense>
 		);
 	}
@@ -27,7 +27,7 @@ AppIcon.defaultProps = {
 	fill: null,
 	width: null,
 	height: null,
-	icon: "facebook",
+	icon: "vk",
 	onPress: null,
 };
 
@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
 	container: {
 		width: "100%",
 		height: "100%",
+		color: "red",
 	},
 });
 

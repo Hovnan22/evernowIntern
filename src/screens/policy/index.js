@@ -7,13 +7,18 @@ import {
 	TouchableOpacity,
 } from "react-native";
 
+import { AppIcon } from "../../components/ui";
+
 const AppPolicy = ({navigation}) => (
 	<View>
 		<View style={styles.backe}>
-			<TouchableOpacity
-				onPress={() => {navigation.goBack();}}
-			>
-				<Text>back</Text>
+			<TouchableOpacity onPress={() => {navigation.goBack();} } >
+				<AppIcon
+					icon="back"
+					width={15}
+					height={25}
+					fill="red"
+				/>
 			</TouchableOpacity>
 		</View>
 		<ScrollView style={styles.container}>
@@ -31,14 +36,14 @@ const AppPolicy = ({navigation}) => (
 const styles = StyleSheet.create({
 	container: {
 		marginHorizontal: 25,
-		marginTop: 70,
+		marginTop: 105,
 	},
 	title: {
 		fontSize: 24,
 	},
 	backe: {
 		position: "absolute",
-		top: 30,
+		top: 55,
 		left: 20,
 	},
 	textMargin: {

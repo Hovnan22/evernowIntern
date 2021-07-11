@@ -8,6 +8,7 @@ import {
 } from "react-native";
 
 import {
+	AppIcon,
 	AppInput,
 	AppImage,
 	AppButton,
@@ -22,10 +23,13 @@ const AppRestorePassword = ({navigation}) => {
 	return (
 		<View style={styles.container}>
 			<View style={styles.backe}>
-				<TouchableOpacity
-					onPress={() => {navigation.goBack();}}
-				>
-					<Text>back</Text>
+				<TouchableOpacity onPress={() => {navigation.goBack();} } >
+					<AppIcon
+						icon="back"
+						width={15}
+						height={25}
+						fill="red"
+					/>
 				</TouchableOpacity>
 			</View>
 			<View style={styles.inputBlock}>
@@ -65,7 +69,7 @@ const styles = StyleSheet.create({
 	inputBlock: {
 		position: "absolute",
 		width: windowWidth -  60,
-		marginTop: 160,
+		marginTop: 190,
 		marginHorizontal: 30,
 	},
 	info: {
@@ -113,7 +117,7 @@ const styles = StyleSheet.create({
 		height: 250,
 	},
 	backe: {
-		top: 30,
+		top: 55,
 		left: 20,
 	},
 });

@@ -3,6 +3,7 @@ import {
 	View,
 	Text,
 	StyleSheet,
+	TouchableOpacity,
 } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 
@@ -10,6 +11,7 @@ import {
 	AppIcon,
 	AppImage,
 	AppButton,
+	AppWrapper,
 } from "../../components/ui";
 import icon from "../../../src/assets/images/logo.png";
 import whiteBg from "../../../src/assets/images/wilcomeWhiteBg.png";
@@ -19,51 +21,69 @@ import {
 	REGISTRATION_SCREEN,
 } from "../../navigation/screens";
 
-const WelcomeScreen = ({navigation}) => (
-	<View style={styles.container}>
-		{/* <AppIcon
-			style={styles.rotate}
-			icon={"google"}
-			width={32}
-			height={32}
-		/> */}
-		<View style={styles.gradienBg}>
-			<AppImage width={"100%"} height={430} url={gradientBg} />
-		</View>
-		<View style={styles.logo}>
-			<AppImage width={200} height={200} url={icon} />
-		</View>
 
-		<View style={styles.buttonBlock}>
-			<View style={styles.buttonBg}>
-				<View style={styles.socialLogin}>
-					<Text>Login via social network</Text>
-					<View style={styles.socialIcons}>
-						<Text style={{fontSize: 25}}>go</Text>
-						<Text style={{fontSize: 25}}>fb</Text>
-						<Text style={{fontSize: 25}}>vk</Text>
+const WelcomeScreen = ({navigation}) => (
+	<AppWrapper>
+		<View style={styles.container}>
+			<View style={styles.gradienBg}>
+				<AppImage width={"100%"} height={430} url={gradientBg} />
+			</View>
+			<View style={styles.logo}>
+				<AppImage width={200} height={200} url={icon} />
+			</View>
+
+			<View style={styles.buttonBlock}>
+				<View style={styles.buttonBg}>
+					<View style={styles.socialLogin}>
+						<Text>Login via social network</Text>
+						<View style={styles.socialIcons}>
+							<TouchableOpacity>
+								<AppIcon
+									icon="google"
+									width={32}
+									height={32}
+									fill="red"
+								/>
+							</TouchableOpacity>
+							<TouchableOpacity>
+								<AppIcon
+									icon="fb"
+									width={32}
+									height={32}
+									fill="red"
+								/>
+							</TouchableOpacity>
+							<TouchableOpacity>
+								<AppIcon
+									icon="vk"
+									width={32}
+									height={32}
+									fill="red"
+								/>
+							</TouchableOpacity>
+						</View>
 					</View>
-				</View>
-				<AppImage width={320} height={320} url={whiteBg} />
-				<View style={styles.buttons}>
-					<LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={["#9AD1FF", "#0075C8"]} style={styles.gradientButton}>
+					<AppImage width={320} height={320} url={whiteBg} />
+					<View style={styles.buttons}>
+						<LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={["#9AD1FF", "#0075C8"]} style={styles.gradientButton}>
+							<AppButton
+								name={"Login"}
+								style={styles.login}
+								color="white"
+								press={() => { navigation.navigate( LOGIN_SCREEN ); }}
+							/>
+						</LinearGradient>
 						<AppButton
-							name={"Login"}
-							style={styles.login}
-							color="white"
-							press={() => { navigation.navigate( LOGIN_SCREEN ); }}
+							name={"Registration"}
+							color={"#18a0fb"}
+							style={styles.registration}
+							press={() => { navigation.navigate(REGISTRATION_SCREEN); }}
 						/>
-					</LinearGradient>
-					<AppButton
-						name={"Registration"}
-						color={"#18a0fb"}
-						style={styles.registration}
-						press={() => { navigation.navigate(REGISTRATION_SCREEN); }}
-					/>
+					</View>
 				</View>
 			</View>
 		</View>
-	</View>
+	</AppWrapper>
 );
 
 const styles = StyleSheet.create({
@@ -84,6 +104,7 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		justifyContent: "space-between",
 		fontSize: 25,
+		marginTop: 25,
 	},
 	login: {
 		width: 260,

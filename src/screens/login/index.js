@@ -2,18 +2,20 @@ import React, { useState } from "react";
 import {
 	View,
 	Text,
-	Dimensions,
 	StyleSheet,
+	Dimensions,
 	TouchableOpacity,
 } from "react-native";
 import { connect } from "react-redux";
-import { isLoggedIn } from "../../actions/app";
 
+import { isLoggedIn } from "../../actions/app";
 import { useLogin } from "../../hooks";
 import {
+	AppIcon,
 	AppImage,
 	AppInput,
 	AppButton,
+	AppWrapper,
 } from "../../components/ui";
 import {
 	HOME_SCREEN,
@@ -48,66 +50,71 @@ const LoginScreen = ({navigation, setIsLoggedIn}) => {
 	};
 
 	return (
-		<View style={styles.container}>
-			<View style={styles.backe}>
-				<TouchableOpacity
-					onPress={() => {navigation.goBack();}}
-				>
-					<Text>back</Text>
-				</TouchableOpacity>
-			</View>
-			<View style={styles.inputBlock}>
-				<AppImage   url={whiteBg} style={styles.inputBg} />
-				<Text style={styles.info}>Login</Text>
-				<AppInput
-					styles={styles.email}
-					placeholder="Email"
-					placeholderColor="#005189"
-					changeEvent={changeEmail}
-					textValue={email}
-				/>
-				<AppInput
-					styles={{...styles.email ,marginVertical: 30} }
-					placeholder="Password"
-					placeholderColor="#005189"
-					changeEvent={changePassword}
-					textValue={password}
-				/>
-				<TouchableOpacity
-					style={styles.restorePass}
-					onPress={() => {navigation.navigate(RESTOREPASSWORD_SCREEN);}}
-				>
-					<Text style={{color: "#9A9CA8"}}>Forgot password</Text>
-				</TouchableOpacity>
-			</View>
-			<View style={styles.gradienBg}>
-				<AppImage width={"100%"} height={430} url={gradientBg} />
-				<View style={styles.buttonBlock}>
-					<View style={styles.buttonBg}>
-						<View style={styles.buttons}>
-							<AppButton
-								color="white"
-								name={"Login"}
-								style={styles.login}
-								press={login}
-							/>
-							<AppButton
-								color="white"
-								name={"Registration"}
-								style={styles.registration}
-								press={() => { navigation.navigate(REGISTRATION_SCREEN); }}
-							/>
-							<AppButton
-								color="#afafaf"
-								name={"Privacy Policy"}
-								style={styles.policy}
-								press={() => { navigation.navigate(POLICY_SCREEN); }}
-							/>
+		<AppWrapper>
+			<View style={styles.container}>
+				<View style={styles.backe}>
+					<TouchableOpacity onPress={() => {navigation.goBack();} } >
+						<AppIcon
+							icon="back"
+							width={15}
+							height={25}
+							fill="red"
+						/>
+					</TouchableOpacity>
+				</View>
+				<View style={styles.inputBlock}>
+					<AppImage   url={whiteBg} style={styles.inputBg} />
+					<Text style={styles.info}>Login</Text>
+					<AppInput
+						styles={styles.email}
+						placeholder="Email"
+						placeholderColor="#005189"
+						changeEvent={changeEmail}
+						textValue={email}
+					/>
+					<AppInput
+						styles={{...styles.email ,marginVertical: 30} }
+						placeholder="Password"
+						placeholderColor="#005189"
+						changeEvent={changePassword}
+						textValue={password}
+					/>
+					<TouchableOpacity
+						style={styles.restorePass}
+						onPress={() => {navigation.navigate(RESTOREPASSWORD_SCREEN);}}
+					>
+						<Text style={{color: "#9A9CA8"}}>Forgot password</Text>
+					</TouchableOpacity>
+				</View>
+				<View style={styles.gradienBg}>
+					<AppImage width={"100%"} height={430} url={gradientBg} />
+					<View style={styles.buttonBlock}>
+						<View style={styles.buttonBg}>
+							<View style={styles.buttons}>
+								<AppButton
+									color="white"
+									name={"Login"}
+									style={styles.login}
+									press={login}
+								/>
+								<AppButton
+									color="white"
+									name={"Registration"}
+									style={styles.registration}
+									press={() => { navigation.navigate(REGISTRATION_SCREEN); }}
+								/>
+								<AppButton
+									color="#afafaf"
+									name={"Privacy Policy"}
+									style={styles.policy}
+									press={() => { navigation.navigate(POLICY_SCREEN); }}
+								/>
+							</View>
 						</View>
 					</View>
 				</View>
 			</View>
-		</View>
+		</AppWrapper>
 	);
 };
 
@@ -138,11 +145,11 @@ const styles = StyleSheet.create({
 	inputBlock: {
 		position: "absolute",
 		width: windowWidth -  60,
-		marginTop: 100,
+		marginTop: 110,
 		marginHorizontal: 30,
 	},
 	backe: {
-		top: 30,
+		top: 55,
 		left: 20,
 	},
 	inputBg: {

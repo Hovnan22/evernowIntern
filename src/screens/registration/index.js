@@ -8,9 +8,11 @@ import {
 } from "react-native";
 
 import {
+	AppIcon,
 	AppImage,
 	AppInput,
 	AppButton,
+	AppWrapper,
 } from "../../components/ui";
 import {
 	LOGIN_SCREEN,
@@ -26,67 +28,72 @@ const RegistrationScreen = ({navigation}) => {
 	const [repPassword, changeRepPassword] = useState("");
 
 	return (
-		<View style={styles.container}>
-			<View style={styles.backe}>
-				<TouchableOpacity
-					onPress={() => {navigation.goBack();}}
-				>
-					<Text>back</Text>
-				</TouchableOpacity>
-			</View>
-			<View style={styles.inputBlock}>
-				<AppImage   url={whiteBg} style={styles.inputBg} />
-				<Text style={styles.info}>Registration</Text>
-				<AppInput
-					styles={styles.email}
-					placeholder="Email"
-					placeholderColor="#005189"
-					changeEvent={changeEmail}
-					textValue={email}
-				/>
-				<AppInput
-					styles={{...styles.email ,marginVertical: 30} }
-					placeholder="Password"
-					placeholderColor="#005189"
-					changeEvent={changePassword}
-					textValue={password}
-				/>
-				<AppInput
-					styles={{...styles.email } }
-					placeholder="Repeat password"
-					placeholderColor="#005189"
-					changeEvent={changeRepPassword}
-					textValue={repPassword}
-				/>
-			</View>
-			<View style={styles.gradienBg}>
-				<AppImage width={"100%"} height={430} url={gradientBg} />
-				<View style={styles.buttonBlock}>
-					<View style={styles.buttonBg}>
-						<View style={styles.buttons}>
-							<AppButton
-								color="white"
-								name={"Registration"}
-								style={styles.login}
-								press={() => { console.log(999); }}
-							/>
-							<AppButton
-								color="white"
-								name={"Login"}
-								style={styles.registration}
-								press={() => { navigation.navigate(LOGIN_SCREEN); }}
-							/>
-							<AppButton
-								color="#afafaf"
-								name={"Privacy Policy"}
-								style={styles.policy}
-								press={() => { navigation.navigate(POLICY_SCREEN); }}
-							/>
+		<AppWrapper>
+			<View style={styles.container}>
+				<View style={styles.backe}>
+					<TouchableOpacity onPress={() => {navigation.goBack();} } >
+						<AppIcon
+							icon="back"
+							width={15}
+							height={25}
+							fill="red"
+						/>
+					</TouchableOpacity>
+				</View>
+				<View style={styles.inputBlock}>
+					<AppImage   url={whiteBg} style={styles.inputBg} />
+					<Text style={styles.info}>Registration</Text>
+					<AppInput
+						styles={styles.email}
+						placeholder="Email"
+						placeholderColor="#005189"
+						changeEvent={changeEmail}
+						textValue={email}
+					/>
+					<AppInput
+						styles={{...styles.email ,marginVertical: 30} }
+						placeholder="Password"
+						placeholderColor="#005189"
+						changeEvent={changePassword}
+						textValue={password}
+					/>
+					<AppInput
+						styles={{...styles.email } }
+						placeholder="Repeat password"
+						placeholderColor="#005189"
+						changeEvent={changeRepPassword}
+						textValue={repPassword}
+					/>
+				</View>
+				<View style={styles.gradienBg}>
+					<AppImage width={"100%"} height={430} url={gradientBg} />
+					<View style={styles.buttonBlock}>
+						<View style={styles.buttonBg}>
+							<View style={styles.buttons}>
+								<AppButton
+									color="white"
+									name={"Registration"}
+									style={styles.login}
+									press={() => { console.log(999); }}
+								/>
+								<AppButton
+									color="white"
+									name={"Login"}
+									style={styles.registration}
+									press={() => { navigation.navigate(LOGIN_SCREEN); }}
+								/>
+								<AppButton
+									color="#afafaf"
+									name={"Privacy Policy"}
+									style={styles.policy}
+									press={() => { navigation.navigate(POLICY_SCREEN); }}
+								/>
+							</View>
 						</View>
 					</View>
 				</View>
 			</View>
-		</View>
+		</AppWrapper>
 	);
 };
 
@@ -117,11 +124,11 @@ const styles = StyleSheet.create({
 	inputBlock: {
 		position: "absolute",
 		width: windowWidth -  60,
-		marginTop: 100,
+		marginTop: 120,
 		marginHorizontal: 30,
 	},
 	backe: {
-		top: 30,
+		top: 55,
 		left: 20,
 	},
 	inputBg: {
