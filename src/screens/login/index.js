@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 
+import { StorageService } from "../../services";
 import { isLoggedIn } from "../../actions/app";
 import { useLogin } from "../../hooks";
 import {
@@ -20,7 +21,6 @@ import {
 import {
 	POLICY_SCREEN,
 	REGISTRATION_SCREEN,
-	TAB_NAVIGATION_SCREEN,
 	RESTOREPASSWORD_SCREEN,
 } from "../../navigation/screens";
 import whiteBg from "../../../src/assets/images/whiteBg.png";
@@ -41,9 +41,9 @@ const LoginScreen = ({navigation, setIsLoggedIn}) => {
 		};
 		try {
 			const data = await onLogin({ variables });
+			console.log(StorageService)
+			await StorageService.setAuth(data)
 			setLoggedInStatus(true);
-			console.log(data,"data");
-			navigation.navigate(TAB_NAVIGATION_SCREEN);
 		} catch (err) {
 			console.log(err);
 		}

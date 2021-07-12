@@ -5,11 +5,11 @@ import {  ApolloProvider } from "@apollo/client";
 
 import  { Store }  from "./src/config";
 import AppNavigationContainer from "./src/navigation";
-import { ApolloServices } from "./src/services";
+import { AppServices } from "./src/services";
 
 const App = () => (
 	<Provider store={Store}>
-		<ApolloProvider client={ApolloServices.client}>
+		<ApolloProvider client={AppServices.apolloClient}>
 			<AppNavigationContainer/>
 		</ApolloProvider>
 	</Provider>

@@ -1,6 +1,6 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { homeRootScreens } from "./screensArray";
+import { tabRootScreens } from "./screensArray";
 import { AppIcon } from "../components/ui";
 import { HOME_SCREEN, MEDITATION_SCREEN, SETTINGS_SCREEN } from "./screens";
 
@@ -37,7 +37,7 @@ export default function AppTabNavigation() {
 				},
 			})}
 		>
-			{ homeRootScreens.map((tab, index) => (
+			{ tabRootScreens.map((tab, index) => (
 				<Tab.Screen
 					key={tab.name} {...tab}
 				/>

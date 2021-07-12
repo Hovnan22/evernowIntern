@@ -20,6 +20,7 @@ import {
 	RESTOREPASSWORD_SCREEN,
 } from "./screens";
 import  AppTabNavigation  from "./tabRoot";
+import HomeRoot from "./homeRoot";
 
 export const welcomeRootScreens = [
 	{
@@ -44,10 +45,24 @@ export const welcomeRootScreens = [
 	},
 ];
 
-export const homeRootScreens = [
+export const homeScreen = [
 	{
 		name: HOME_SCREEN,
 		component: HomeScreen,
+		iconName: "home",
+	},
+	{
+		name: MEDITATION_SCREEN,
+		component: AppMeditation,
+		iconName: "yoga",
+	},
+
+];
+
+export const tabRootScreens = [
+	{
+		name: HOME_SCREEN,
+		component: HomeRoot,
 		iconName: "home",
 	},
 	{
