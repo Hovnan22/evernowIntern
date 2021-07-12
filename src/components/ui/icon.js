@@ -6,6 +6,9 @@ const components = {
 	"fb": React.lazy(() => import("../../assets/icons/fb.svg")),
 	"vk": React.lazy(() => import("../../assets/icons/vk.svg")),
 	"back": React.lazy(() => import("../../assets/icons/back.svg")),
+	"home": React.lazy(() => import("../../assets/icons/home.svg")),
+	"yoga": React.lazy(() => import("../../assets/icons/yoga.svg")),
+	"settings": React.lazy(() => import("../../assets/icons/settings.svg")),
 };
 
 const RenderIcon = ({icon, style, ...props}) => {

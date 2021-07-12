@@ -18,9 +18,9 @@ import {
 	AppWrapper,
 } from "../../components/ui";
 import {
-	HOME_SCREEN,
 	POLICY_SCREEN,
 	REGISTRATION_SCREEN,
+	TAB_NAVIGATION_SCREEN,
 	RESTOREPASSWORD_SCREEN,
 } from "../../navigation/screens";
 import whiteBg from "../../../src/assets/images/whiteBg.png";
@@ -43,7 +43,7 @@ const LoginScreen = ({navigation, setIsLoggedIn}) => {
 			const data = await onLogin({ variables });
 			setLoggedInStatus(true);
 			console.log(data,"data");
-			navigation.navigate(HOME_SCREEN);
+			navigation.navigate(TAB_NAVIGATION_SCREEN);
 		} catch (err) {
 			console.log(err);
 		}

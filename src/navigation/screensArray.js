@@ -2,7 +2,9 @@ import {
 	AppPolicy,
 	HomeScreen,
 	LoginScreen,
+	AppSettings,
 	WelcomeScreen,
+	AppMeditation,
 	AppRestorePassword,
 	RegistrationScreen,
 } from "../screens";
@@ -11,9 +13,13 @@ import {
 	LOGIN_SCREEN,
 	POLICY_SCREEN,
 	WELCOME_SCREEN,
+	SETTINGS_SCREEN,
+	MEDITATION_SCREEN,
 	REGISTRATION_SCREEN,
+	TAB_NAVIGATION_SCREEN,
 	RESTOREPASSWORD_SCREEN,
 } from "./screens";
+import  AppTabNavigation  from "./tabRoot";
 
 export const welcomeRootScreens = [
 	{
@@ -42,5 +48,23 @@ export const homeRootScreens = [
 	{
 		name: HOME_SCREEN,
 		component: HomeScreen,
+		iconName: "home",
+	},
+	{
+		name: MEDITATION_SCREEN,
+		component: AppMeditation,
+		iconName: "yoga",
+	},
+	{
+		name: SETTINGS_SCREEN,
+		component: AppSettings,
+		iconName: "settings",
+	},
+];
+
+export const tabNavigation = [
+	{
+		name: TAB_NAVIGATION_SCREEN,
+		component: AppTabNavigation,
 	},
 ];

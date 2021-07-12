@@ -1,7 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import { homeRootScreens } from "./screensArray";
+import { tabNavigation } from "./screensArray";
 
 const Stack = createStackNavigator();
 const AppRoot = () => (
@@ -9,7 +9,7 @@ const AppRoot = () => (
 		screenOptions={() => ({
 			headerShown: false,
 		})}>
-		{homeRootScreens.map(screen => (
+		{tabNavigation.map(screen => (
 			<Stack.Screen {...screen}
 				key={screen.name}
 			/>
