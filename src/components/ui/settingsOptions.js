@@ -8,7 +8,7 @@ const AppSettingsOptions = ({options}) => (
 			{ items.icon && items.icon}
 			{ items.avatar && items.avatar}
 			<Text>{items.name}</Text>
-		</TouchableOpacity>) )}
+		</TouchableOpacity>) )} 
 	</View>
 );
 
