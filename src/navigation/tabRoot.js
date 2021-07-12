@@ -9,33 +9,7 @@ const Tab = createBottomTabNavigator();
 export default function AppTabNavigation() {
 	return (
 		<Tab.Navigator
-    tabBarOptions={{ showLabel: false }}
-			screenOptions={({ route }) => ({
-				tabBarIcon: ({ focused, color, size }) => {
-					if (route.name === HOME_SCREEN) {
-						return (
-							<AppIcon
-								icon="home"
-								style={{color: "red"}}
-							/>
-						);
-					} else if (route.name === SETTINGS_SCREEN) {
-						return (
-							<AppIcon
-								icon="home"
-								style={{color: "red"}}
-							/>
-						);
-					} else if (route.name === MEDITATION_SCREEN) {
-						return (
-							<AppIcon
-								icon="home"
-								style={{color: "red"}}
-							/>
-						);
-					}
-				},
-			})}
+			tabBarOptions={{ showLabel: false }}
 		>
 			{ tabRootScreens.map((tab, index) => (
 				<Tab.Screen

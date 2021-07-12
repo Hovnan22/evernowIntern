@@ -1,4 +1,4 @@
-export { default as HomeScreen } from "./Home";
+export { default as HomeScreen } from "./home";
 export { default as AppPolicy } from "./policy";
 export { default as LoginScreen } from "./login";
 export { default as AppSettings } from "./settings";

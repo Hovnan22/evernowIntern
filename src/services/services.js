@@ -12,7 +12,6 @@ export default class AppServices  {
 
 	static async checkStatus () {
 		const auth = await StorageService.getAuth();
-		console.log(auth,'auth')
 		Store.dispatch(isLoggedIn(auth? auth: false));
 	}
 

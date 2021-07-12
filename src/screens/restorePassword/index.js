@@ -1,62 +1,22 @@
 import React, { useState } from "react";
 import {
-	View,
 	Text,
 	StyleSheet,
 	Dimensions,
-	TouchableOpacity,
 } from "react-native";
 
 import {
-	AppIcon,
-	AppInput,
-	AppImage,
-	AppButton,
+	AppWrapper,
 } from "../../components/ui";
-import whiteBg from "../../../src/assets/images/whiteBg.png";
-import gradientBg from "../../../src/assets/images/welcomeBg.png";
+
 
 const windowWidth = Dimensions.get("window").width;
 
-const AppRestorePassword = ({navigation}) => {
-	const [newPassword, setNewPassword] = useState("");
-	return (
-		<View style={styles.container}>
-			<View style={styles.backe}>
-				<TouchableOpacity onPress={() => {navigation.goBack();} } >
-					<AppIcon
-						icon="back"
-						width={15}
-						height={25}
-						fill="red"
-					/>
-				</TouchableOpacity>
-			</View>
-			<View style={styles.inputBlock}>
-				<AppImage   url={whiteBg} style={styles.inputBg} />
-				<Text style={styles.info}>Restore password</Text>
-				<AppInput
-					styles={styles.newPass}
-					placeholder="Email"
-					placeholderColor="#005189"
-					changeEvent={setNewPassword}
-					textValue={newPassword}
-				/>
-			</View>
-			<View style={styles.gradienBg}>
-				<AppImage width={"100%"} height={430} url={gradientBg} />
-				<View style={styles.buttons}>
-					<AppButton
-						color="white"
-						name={"Send"}
-						style={styles.login}
-						press={() => { console.log(111); }}
-					/>
-				</View>
-			</View>
-		</View>
-	);
-};
+const AppRestorePassword = ({navigation}) => (
+	<AppWrapper navigation={navigation}>
+		<Text>forgot password</Text>
+	</AppWrapper>
+);
 
 const styles = StyleSheet.create({
 	newPass:  {

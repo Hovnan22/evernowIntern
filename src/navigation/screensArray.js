@@ -1,3 +1,5 @@
+import React from "react";
+
 import {
 	AppPolicy,
 	HomeScreen,
@@ -21,6 +23,7 @@ import {
 } from "./screens";
 import  AppTabNavigation  from "./tabRoot";
 import HomeRoot from "./homeRoot";
+import { AppIcon } from "../components/ui";
 
 export const welcomeRootScreens = [
 	{
@@ -61,20 +64,34 @@ export const homeScreen = [
 
 export const tabRootScreens = [
 	{
+		name: SETTINGS_SCREEN,
+		component: AppSettings,
+		iconName: "settings",
+		options: {
+			tabBarIcon: () => (
+				<AppIcon icon="settings" width={24} height={24} fill="white" />
+			),
+		},
+	},
+	{
 		name: HOME_SCREEN,
 		component: HomeRoot,
-		iconName: "home",
+		options: {
+			tabBarIcon: () => (
+				<AppIcon icon="home" width={24} height={24} fill="white" />
+			),
+		},
 	},
 	{
 		name: MEDITATION_SCREEN,
 		component: AppMeditation,
-		iconName: "yoga",
+		options: {
+			tabBarIcon: () => (
+				<AppIcon icon="yoga" width={24} height={24} fill="white" />
+			),
+		},
 	},
-	{
-		name: SETTINGS_SCREEN,
-		component: AppSettings,
-		iconName: "settings",
-	},
+
 ];
 
 export const tabNavigation = [

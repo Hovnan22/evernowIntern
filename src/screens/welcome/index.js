@@ -1,17 +1,15 @@
 import React from "react";
 import {
 	View,
-	Text,
 	StyleSheet,
-	TouchableOpacity,
+	ImageBackground,
 } from "react-native";
-import LinearGradient from "react-native-linear-gradient";
-
 import {
-	AppIcon,
 	AppImage,
 	AppButton,
 	AppWrapper,
+	AppLinerButton,
+	AppSocialButtons,
 } from "../../components/ui";
 import icon from "../../../src/assets/images/logo.png";
 import whiteBg from "../../../src/assets/images/wilcomeWhiteBg.png";
@@ -22,57 +20,54 @@ import {
 } from "../../navigation/screens";
 
 
-const WelcomeScreen = ({navigation}) => (
-	<AppWrapper>
-		<View style={styles.container}>
-			<View style={styles.gradienBg}>
-				<AppImage width={"100%"} height={430} url={gradientBg} />
-			</View>
-			<View style={styles.logo}>
-				<AppImage width={200} height={200} url={icon} />
-			</View>
-
-			<View style={styles.buttonBlock}>
-				<View style={styles.buttonBg}>
-					<View style={styles.socialLogin}>
-						<Text>Login via social network</Text>
-						<View style={styles.socialIcons}>
-							<TouchableOpacity>
-								<AppIcon
-									icon="google"
-									width={32}
-									height={32}
-									fill="red"
-								/>
-							</TouchableOpacity>
-							<TouchableOpacity>
-								<AppIcon
-									icon="fb"
-									width={32}
-									height={32}
-									fill="red"
-								/>
-							</TouchableOpacity>
-							<TouchableOpacity>
-								<AppIcon
-									icon="vk"
-									width={32}
-									height={32}
-									fill="red"
-								/>
-							</TouchableOpacity>
-						</View>
-					</View>
+const WelcomeScreen = ({navigation}) => {
+	const socialButtons = [
+		{
+			width: 32,
+			height: 32,
+			iconName: "google",
+		},
+		{
+			width: 32,
+			height: 32,
+			iconName: "fb",
+		},
+		{
+			width: 32,
+			height: 32,
+			iconName: "vk",
+		},
+	];
+	const goToLogin = () => {
+		navigation.navigate( LOGIN_SCREEN );
+	};
+	return (
+		<AppWrapper showBackBtn={false}>
+			<View style={styles.container}>
+				<View style={styles.gradienBg}>
+					<AppImage width={"100%"} height={430} url={gradientBg} />
+				</View>
+				<View style={styles.logo}>
+					<AppImage width={200} height={200} url={icon} />
+				</View>
+				<View style={[styles.buttonBg,styles.buttonBlock]}>
+					<AppSocialButtons
+						socialLoginStyles={styles.socialLogin}
+						socialIconsStyles={styles.socialIcons}
+						socialButtons={socialButtons}
+					/>
 					<AppImage width={320} height={320} url={whiteBg} />
 					<View style={styles.buttons}>
-						<LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={["#9AD1FF", "#0075C8"]} style={styles.gradientButton}>
-							<AppButton
-								name={"Login"}
-								style={styles.login}
-								color="white"
-								press={() => { navigation.navigate( LOGIN_SCREEN ); }}
-							/>
-						</LinearGradient>
+						<AppLinerButton
+							gradientButton={styles.gradientButton}
+							colors={["#9AD1FF", "#0075C8"]}
+							styles={styles.login}
+							start={{ x: 0, y: 0 }}
+							end={{ x: 1, y: 0 }}
+							press={goToLogin}
+							textColor="white"
+							name="Login"
+						/>
 						<AppButton
 							name={"Registration"}
 							color={"#18a0fb"}
@@ -82,9 +77,9 @@ const WelcomeScreen = ({navigation}) => (
 					</View>
 				</View>
 			</View>
-		</View>
-	</AppWrapper>
-);
+		</AppWrapper>
+	);
+};
 
 const styles = StyleSheet.create({
 

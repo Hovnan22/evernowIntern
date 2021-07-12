@@ -7,7 +7,7 @@ import {
 const AppInput = ({styles,changeEvent,textValue = "",placeholder,placeholderColor = "#EDF2FF"}) => (
 	<View>
 		<TextInput
-			style={{...styles}}
+			style={[styles]}
 			onChangeText={changeEvent}
 			value={textValue}
 			placeholderTextColor={placeholderColor}

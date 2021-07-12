@@ -7,7 +7,7 @@ import {
 import { AppIconeButton } from ".";
 
 
-const AppWrapper = ({children,showBackBtn = true,navigation}) => {
+const AppWrapper = ({navigation,children,showBackBtn = true}) => {
 	const goBackHendler = () => {
 		navigation && navigation.canGoBack() &&  navigation.goBack();
 	};
