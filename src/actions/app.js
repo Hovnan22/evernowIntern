@@ -1,8 +1,6 @@
-import { LOGIN } from "../redux/types";
+import { LOGIN } from "./types";
 
-export default isLoggedIn = (LogedStatus) => {
-    return {
-        type: LOGIN,
-        payload: LogedStatus
-    }
-}
+export const  isLoggedIn = LogedStatus => ({
+	type: LOGIN,
+	payload: LogedStatus,
+});
