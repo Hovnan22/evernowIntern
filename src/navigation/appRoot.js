@@ -1,20 +1,19 @@
 import React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { tabRootScreens } from "./screensArray";
 
-import { tabNavigation } from "./screensArray";
-
-const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 const AppRoot = () => (
-	<Stack.Navigator
-		screenOptions={() => ({
-			headerShown: false,
-		})}>
-		{tabNavigation.map(screen => (
-			<Stack.Screen {...screen}
-				key={screen.name}
-			/>
-		))}
-	</Stack.Navigator>
+	<Tab.Navigator
+	tabBarOptions={{ showLabel: false }}
+>
+	{ tabRootScreens.map((tab, index) => (
+		<Tab.Screen
+			key={tab.name} {...tab}
+		/>
+	))
+	}
+</Tab.Navigator>
 );
 
 export default AppRoot;

@@ -9,6 +9,7 @@ import {
 	AppMeditation,
 	AppRestorePassword,
 	RegistrationScreen,
+	AppSetingsOptionScreen,
 } from "../screens";
 import {
 	HOME_SCREEN,
@@ -17,12 +18,12 @@ import {
 	WELCOME_SCREEN,
 	SETTINGS_SCREEN,
 	MEDITATION_SCREEN,
+	SETTINGS_OPTION_SCREEN,
 	REGISTRATION_SCREEN,
-	TAB_NAVIGATION_SCREEN,
 	RESTOREPASSWORD_SCREEN,
 } from "./screens";
-import  AppTabNavigation  from "./tabRoot";
 import HomeRoot from "./homeRoot";
+import SettingsRoot from "./appSettingsRoot"
 import { AppIcon } from "../components/ui";
 
 export const welcomeRootScreens = [
@@ -62,6 +63,21 @@ export const homeScreen = [
 
 ];
 
+export const settingsScreen = [
+	{
+		name: SETTINGS_SCREEN,
+		component: AppSettings,
+		iconName: "settings",
+	},
+	{
+		name: SETTINGS_OPTION_SCREEN,
+		component: AppSetingsOptionScreen,
+		iconName: "settings",
+
+	},
+
+];
+
 export const tabRootScreens = [
 	{
 		name: SETTINGS_SCREEN,
@@ -94,9 +110,4 @@ export const tabRootScreens = [
 
 ];
 
-export const tabNavigation = [
-	{
-		name: TAB_NAVIGATION_SCREEN,
-		component: AppTabNavigation,
-	},
-];
+

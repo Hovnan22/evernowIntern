@@ -7,3 +7,4 @@ export const MEDITATION_SCREEN = "evernow.meditation";
 export const TAB_NAVIGATION_SCREEN = "evernow.tabNav";
 export const RESTOREPASSWORD_SCREEN = "evernow.restore";
 export const REGISTRATION_SCREEN = "evernow.registration";
+export const SETTINGS_OPTION_SCREEN = "evernow.settingsoption";

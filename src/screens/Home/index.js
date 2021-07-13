@@ -33,11 +33,13 @@ const HomeScreen = ({setIsLoggedIn}) => {
 				{/* <AppImage url={topBg} style={styles.inputBg} /> */}
 				{/* </View> */}
 				<AppButton
-					color="red"
+					textStyle={styles.registrationButtonsText}
 					style={styles.logOut}
 					name={"logedOut"}
 					press={logOut}
+					type="border"
 				/>
+
 				<Text style={{color: "red"}}>ddd</Text>
 			</View>
 
@@ -46,6 +48,9 @@ const HomeScreen = ({setIsLoggedIn}) => {
 };
 
 const styles = StyleSheet.create({
+	registrationButtonsText: {
+		color: "#18a0fb",
+	},
 	inputBg: {
 		position: "absolute",
 		zIndex: 1,
@@ -62,7 +67,7 @@ const styles = StyleSheet.create({
 		height: 80,
 		marginBottom: 10,
 		justifyContent: "center",
-		// flex: 1,
+		flex: 1,
 		alignItems: "center",
 		borderRadius: 10,
 		borderColor: "white",

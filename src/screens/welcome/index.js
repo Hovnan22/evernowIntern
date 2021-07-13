@@ -9,8 +9,8 @@ import {
 	AppButton,
 	AppWrapper,
 	AppLinerButton,
-	AppSocialButtons,
 } from "../../components/ui";
+import { AppSocialButtons } from "../../components/welcome"
 import icon from "../../../src/assets/images/logo.png";
 import whiteBg from "../../../src/assets/images/wilcomeWhiteBg.png";
 import gradientBg from "../../../src/assets/images/welcomeBg.png";
@@ -38,9 +38,8 @@ const WelcomeScreen = ({navigation}) => {
 			iconName: "vk",
 		},
 	];
-	const goToLogin = () => {
-		navigation.navigate( LOGIN_SCREEN );
-	};
+	const goToLogin = () => navigation.navigate( LOGIN_SCREEN );
+	const goToRegistration = () => navigation.navigate(REGISTRATION_SCREEN);
 	return (
 		<AppWrapper showBackBtn={false}>
 			<View style={styles.container}>
@@ -58,21 +57,23 @@ const WelcomeScreen = ({navigation}) => {
 					/>
 					<AppImage width={320} height={320} url={whiteBg} />
 					<View style={styles.buttons}>
-						<AppLinerButton
-							gradientButton={styles.gradientButton}
-							colors={["#9AD1FF", "#0075C8"]}
-							styles={styles.login}
+						<AppButton
+							gradientButtonStyle={styles.gradientButton}
+							gradientColor={["#9AD1FF", "#0075C8"]}
+							style={styles.login}
 							start={{ x: 0, y: 0 }}
 							end={{ x: 1, y: 0 }}
 							press={goToLogin}
-							textColor="white"
+							textStyle={styles.loginText}
 							name="Login"
+							type="gradient"
 						/>
 						<AppButton
 							name={"Registration"}
-							color={"#18a0fb"}
+							textStyle={styles.registrationButtonsText}
 							style={styles.registration}
-							press={() => { navigation.navigate(REGISTRATION_SCREEN); }}
+							press={goToRegistration}
+							type="border"
 						/>
 					</View>
 				</View>
@@ -82,7 +83,12 @@ const WelcomeScreen = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
-
+	registrationButtonsText: {
+		color: "#18a0fb",
+	},
+	loginText: {
+		color: "#fff",
+	},
 	buttons: {
 		zIndex: 1,
 		position: "absolute",

@@ -18,10 +18,11 @@ const AppFormButtonsBlock = ({
 			{buttonsArray.map( items => (
 				<AppButton
 					key={items.name}
-					color={items.color}
+					textStyle={items.textStyle}
 					name={items.name}
 					style={[items.style]}
 					press={items.press}
+					type={items.type}
 				/>
 			))}
 		</View>

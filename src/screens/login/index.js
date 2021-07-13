@@ -10,9 +10,11 @@ import { isLoggedIn } from "../../actions/app";
 import { useLogin } from "../../hooks";
 import {
 	AppWrapper,
-	AppLoginInputField,
 	AppFormButtonsBlock,
 } from "../../components/ui";
+import {
+	AppLoginInputField,
+} from "../../components/login";
 import {
 	POLICY_SCREEN,
 	REGISTRATION_SCREEN,
@@ -20,7 +22,7 @@ import {
 } from "../../navigation/screens";
 
 
-const LoginScreen = ({navigation, setIsLoggedIn}) => {
+const LoginScreen = ({ navigation, setIsLoggedIn }) => {
 	const [email, changeEmail] = useState("user1@example.com");
 	const [password, changePassword] = useState("passwoord");
 	const [onLogin] = useLogin();
@@ -52,35 +54,38 @@ const LoginScreen = ({navigation, setIsLoggedIn}) => {
 
 	const buttonsArray = [
 		{
-			color: "white",
+			textStyle: {color: "#fff"},
 			name: "Login",
 			style: styles.login,
 			press: login,
+			type: "border"
 		},
 		{
-			color:"white",
+			textStyle: {color: "#fff"},
 			name: "Registration",
 			style: styles.registration,
 			press: goToregistration,
+			type: "transparent",
 		},
 		{
-			color:"#afafaf",
-			name:"Privacy Policy",
+			textStyle: {color: "#fff", opacity: 0.3},
+			name: "Privacy Policy",
 			style: styles.policy,
 			press: goToPolicy,
+			type: "transparent",
 		},
 	];
 
 	return (
 		<AppWrapper navigation={navigation}>
 			<View style={styles.container}>
-				<AppLoginInputField
-					email={email}
-					password={password}
-					changeEmail={changeEmail}
-					changePassword={changePassword}
-					restorePassword={restorePassword}
-				/>
+					<AppLoginInputField
+						email={email}
+						password={password}
+						changeEmail={changeEmail}
+						changePassword={changePassword}
+						restorePassword={restorePassword}
+					/>
 				<AppFormButtonsBlock buttonsArray={buttonsArray} />
 			</View>
 		</AppWrapper>
@@ -93,7 +98,6 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		width: 300,
 		marginVertical: 10,
-		
 	},
 	registration: {
 		width: 300,
@@ -104,23 +108,24 @@ const styles = StyleSheet.create({
 		marginTop: 25,
 	},
 	login: {
-		backgroundColor: "rgba(0,0,0,0)",
-		width: 300,
-		height: 60,
-		marginBottom: 10,
-		justifyContent: "center",
-		alignItems: "center",
-		textAlign: "center",
-		borderRadius: 10,
-		borderColor: "white",
+		// backgroundColor: "rgba(0,0,0,0)",
+		// width: 300,
+		// // height: 60,
+		// marginBottom: 10,
+		// // justifyContent: "center",
+		// // alignItems: "center",
+		// textAlign: "center",
+		// borderRadius: 10,
+		borderColor: "#fff",
 		borderWidth: 2,
-		marginTop: 20,
+		// marginTop: 20,
 
 	},
 	container: {
 		width: "100%",
 		height: "100%",
 		backgroundColor: "#f2f2f2",
+		// flex: 1,
 	},
 
 });
