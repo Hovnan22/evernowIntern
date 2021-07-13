@@ -49,7 +49,6 @@ const AppLoginInputField = ({
 	</View>
 );
 
-export default AppLoginInputField;
 const styles = StyleSheet.create({
 	forgotStyle: {
 		color: "#9A9CA8",
@@ -91,3 +90,5 @@ const styles = StyleSheet.create({
 	},
 
 });
+
+export default AppLoginInputField;

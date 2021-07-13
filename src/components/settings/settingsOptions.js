@@ -9,20 +9,19 @@ import { SETTINGS_OPTION_SCREEN } from "../../navigation/screens";
 
 
 const AppSettingsOptions = ({ item, navigation }) => {
-	//  const navigateToSettingsOption = useCallback(() => {
-	// 	navigation.navigate(SETTINGS_OPTION_SCREEN,{item})
-	// },[]);
-	const navigateToSettingsOption = () => {
-		navigation.navigate(SETTINGS_OPTION_SCREEN, { item });
-	};
+	const navigateToSettingsOption = useCallback(() => {
+		navigation.navigate(SETTINGS_OPTION_SCREEN, { screenName: item.screenName });
+	},[]);
+
 	return (
 		<View style={styles.options}>
-			<TouchableOpacity onPress={navigateToSettingsOption} style={styles.option}>
+			<TouchableOpacity onPress={ navigateToSettingsOption } style={styles.option}>
 				<Text>{item.name}</Text>
 			</TouchableOpacity>
 		</View>
 	);
-}
+};
+
 
 
 const styles = StyleSheet.create({

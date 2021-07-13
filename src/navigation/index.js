@@ -7,17 +7,17 @@ import  AppServices  from "./../services/services";
 
 
 const AppNavigationContainer = ({ isLoggedIn }) => {
-	const [isReady,setIsReady] = useState(false) 
+	const [isReady,setIsReady] = useState(false);
 	useEffect( async () => {
 		await AppServices.checkStatus();
-		setIsReady(true)
-	},[])
+		setIsReady(true);
+	},[]);
 
 	return (
-	<NavigationContainer>
+		<NavigationContainer>
 			{ isReady  && (isLoggedIn ? <AppRoot /> : <WelcomeRoot />) }
-	</NavigationContainer>
-)
+		</NavigationContainer>
+	);
 };
 
 const mapStateToProps = ({ app: { isLoggedIn } }) => ({

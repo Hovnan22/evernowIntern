@@ -75,13 +75,12 @@ export const settingsScreen = [
 		iconName: "settings",
 
 	},
-
 ];
 
 export const tabRootScreens = [
 	{
 		name: SETTINGS_SCREEN,
-		component: AppSettings,
+		component: SettingsRoot,
 		iconName: "settings",
 		options: {
 			tabBarIcon: () => (

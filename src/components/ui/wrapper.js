@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import {
 	View,
 	StatusBar,
@@ -8,9 +8,9 @@ import { AppIconeButton } from ".";
 
 
 const AppWrapper = ({children,showBackBtn = true,navigation}) => {
-	const goBackHendler = () => {
+	const goBackHendler = useCallback(() => {
 		navigation && navigation.canGoBack() &&  navigation.goBack();
-	};
+	},[]);
 
 	return (
 		<View style={styles}>

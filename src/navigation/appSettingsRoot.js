@@ -6,7 +6,7 @@ import { settingsScreen } from "./screensArray";
 const Stack = createStackNavigator();
 const SettingsRoot = () => (
 	<Stack.Navigator
-  screenOptions={() => ({
+		screenOptions={() => ({
 			headerShown: false,
 		})}>
 		{settingsScreen.map(screen => (

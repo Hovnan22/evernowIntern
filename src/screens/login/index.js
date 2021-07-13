@@ -46,11 +46,11 @@ const LoginScreen = ({ navigation, setIsLoggedIn }) => {
 	};
 	const goToregistration = () => {
 		navigation.navigate(REGISTRATION_SCREEN);
-	}
+	};
 
 	const goToPolicy = () => {
 		navigation.navigate(POLICY_SCREEN);
-	}
+	};
 
 	const buttonsArray = [
 		{
@@ -58,7 +58,7 @@ const LoginScreen = ({ navigation, setIsLoggedIn }) => {
 			name: "Login",
 			style: styles.login,
 			press: login,
-			type: "border"
+			type: "border",
 		},
 		{
 			textStyle: {color: "#fff"},
@@ -79,13 +79,13 @@ const LoginScreen = ({ navigation, setIsLoggedIn }) => {
 	return (
 		<AppWrapper navigation={navigation}>
 			<View style={styles.container}>
-					<AppLoginInputField
-						email={email}
-						password={password}
-						changeEmail={changeEmail}
-						changePassword={changePassword}
-						restorePassword={restorePassword}
-					/>
+				<AppLoginInputField
+					email={email}
+					password={password}
+					changeEmail={changeEmail}
+					changePassword={changePassword}
+					restorePassword={restorePassword}
+				/>
 				<AppFormButtonsBlock buttonsArray={buttonsArray} />
 			</View>
 		</AppWrapper>
@@ -108,24 +108,14 @@ const styles = StyleSheet.create({
 		marginTop: 25,
 	},
 	login: {
-		// backgroundColor: "rgba(0,0,0,0)",
-		// width: 300,
-		// // height: 60,
-		// marginBottom: 10,
-		// // justifyContent: "center",
-		// // alignItems: "center",
-		// textAlign: "center",
-		// borderRadius: 10,
 		borderColor: "#fff",
 		borderWidth: 2,
-		// marginTop: 20,
 
 	},
 	container: {
 		width: "100%",
 		height: "100%",
 		backgroundColor: "#f2f2f2",
-		// flex: 1,
 	},
 
 });
