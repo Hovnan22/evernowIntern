@@ -1,15 +1,15 @@
-import React, { useCallback, useMemo } from "react";
-import { FlatList,
+import React, { useCallback, useState } from "react";
+import {
+	FlatList,
 	TouchableOpacity,
-	 StyleSheet,
-	 Text,
-	 View,
+	StyleSheet,
+	Text,
+	View,
 } from "react-native";
 import { connect } from "react-redux";
 
 import {
-	AppAvatar,
-	AppIcon,
+	AppChangeAvatar,
 } from "../../components/settings";
 import {
 	AppWrapper,
@@ -25,38 +25,48 @@ import { SETTINGSOPTION } from "../../components/constants/settings";
 
 
 const AppSettings = ({ navigation, setIsLoggedIn }) => {
-
-	const logOut = useCallback( async () => {
+	const [changeAvatar, setChangeAvatar] = useState();
+	const logOut = useCallback(async () => {
 		await StorageService.setAuth(false);
 		setIsLoggedIn(false);
 
 	}, []);
 
+	const closeHandler = useCallback(async () => {
+		setChangeAvatar(false);
+	}, []);
 
 	return (
 		<AppWrapper>
-			<FlatList
-				ListHeaderComponent={() => <AppUserInfo navigation={navigation}/>}
-				style={styles.options	}
-				data={SETTINGSOPTION}
-				key={item => item.key}
-				renderItem={({item}) => <AppSettingsOptions
-					item={item}
-					navigation={navigation}
-				/>}
-				ListFooterComponent={() => (<View >
-					<TouchableOpacity onPress={ logOut } style={styles.logOut}>
-						<Text>logedOut</Text>
-					</TouchableOpacity>
-				</View>)}
-				keyExtractor={item => item.name}
-			/>
+			<View style={styles.container}>
+				{changeAvatar && <AppChangeAvatar closeHandler={closeHandler} />}
+				<FlatList
+					ListHeaderComponent={() => <AppUserInfo changeAvatar={changeAvatar} setChangeAvatar={setChangeAvatar} navigation={navigation} />}
+					style={styles.options}
+					data={SETTINGSOPTION}
+					key={item => item.key}
+					renderItem={({ item }) => <AppSettingsOptions
+						item={item}
+						navigation={navigation}
+					/>}
+					ListFooterComponent={() => (<View >
+						<TouchableOpacity onPress={logOut} style={styles.logOut}>
+							<Text>logedOut</Text>
+						</TouchableOpacity>
+					</View>)}
+					keyExtractor={item => item.name}
+				/>
+			</View>
 		</AppWrapper>
 	);
 };
 
 
 const styles = StyleSheet.create({
+	container: {
+		width: "100%",
+		height: " 100%",
+	},
 	options: {
 		top: 110,
 	},
@@ -73,4 +83,4 @@ const mapDispatchToProps = dispatch => ({
 	setIsLoggedIn: loginStatus => dispatch(isLoggedIn(loginStatus)),
 });
 
-export default connect(null,mapDispatchToProps)(AppSettings);
+export default connect(null, mapDispatchToProps)(AppSettings);

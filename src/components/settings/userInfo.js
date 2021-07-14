@@ -10,10 +10,11 @@ import { AppIcon } from "../ui";
 import { SETTINGS_OPTION_SCREEN } from "../../navigation/screens";
 
 
-const AppUserInfo = ({navigation}) => {
+const AppUserInfo = ({navigation,changeAvatar,setChangeAvatar}) => {
+
 	const EditAvatar = useCallback(
 		() => {
-			navigation.navigate(SETTINGS_OPTION_SCREEN, {showEditAvatar: true});
+			setChangeAvatar(true)
 		}, []
 	);
   const EditName = useCallback(

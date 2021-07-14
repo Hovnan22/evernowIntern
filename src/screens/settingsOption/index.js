@@ -13,27 +13,24 @@ import {
 } from "../../components/ui";
 
 const AppSetingsOptionScreen = ({
+	route,
 	navigation,
-	screenName,
-	showEditName,
-	showEditAvatar,
-}) => (
+}) => {
+	const {classTime, timeZon,changeLanguage, changePassword, changeEmail, showEditName ,showEditAvatar } = route.params;
+	return (
 	<AppWrapper navigation={navigation}>
+		{
+			console.log(classTime, timeZon,changeLanguage, changePassword, changeEmail, showEditName )
+		}
 		<View style={styles.container}>
 			<AppSettingsInputField
-				screenName={screenName}
-				showEditName={showEditName}
-				showEditAvatar={showEditAvatar}
-				// email={email}
-				// password={password}
-				// changeEmail={changeEmail}
-				// changePassword={changePassword}
-				// restorePassword={restorePassword}
+					params={route.params}
 			/>
 			<AppformSettingsButton /*status={status}*/ />
 		</View>
 	</AppWrapper>
-);
+)
+};
 
 const styles = StyleSheet.create({
 	container: {

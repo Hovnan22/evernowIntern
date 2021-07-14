@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
 	View,
 	Text,
@@ -15,39 +15,27 @@ import whiteBg from "../../../src/assets/images/whiteBg.png";
 
 const windowWidth = Dimensions.get("window").width;
 const AppSettingsInputField = ({
-	email,
-	password,
-	changeEmail,
-	changePassword,
-	restorePassword,
-}) =>  (
-	<View style={styles.inputBlock}>
-		<ImageBackground   source={whiteBg} style={styles.inputBg} resizeMode="stretch" >
-			<Text style={styles.info}>Login</Text>
-			<AppInput
-				styles={styles.email}
-				placeholder="Email"
-				placeholderColor="#005189"
-				changeEvent={changeEmail}
-				textValue={email}
-			/>
-			<AppInput
-				styles={ [styles.email , styles.marginVertical] }
-				placeholder="Password"
-				placeholderColor="#005189"
-				changeEvent={changePassword}
-				textValue={password}
-			/>
-			<AppButton
-				textStyle={styles.forgotStyle}
-				name={"Forgot password"}
-				style={styles.restorePass}
-				press={restorePassword}
-				type="border"
-			/>
-		</ImageBackground>
-	</View>
-);
+
+}) =>  {
+	const [email,changeEmail] = useState();
+	
+	return (
+		<View style={styles.inputBlock}>{
+		}
+			<ImageBackground   source={whiteBg} style={styles.inputBg} resizeMode="stretch" >
+				<Text style={styles.info}>Login</Text>
+				<AppInput
+					styles={styles.email}
+					placeholder="Email"
+					placeholderColor="#005189"
+					changeEvent={changeEmail}
+					textValue={email}
+				/>
+			</ImageBackground>
+		</View>
+	);
+}
+
 
 const styles = StyleSheet.create({
 	forgotStyle: {

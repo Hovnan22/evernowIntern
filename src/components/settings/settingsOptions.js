@@ -10,7 +10,7 @@ import { SETTINGS_OPTION_SCREEN } from "../../navigation/screens";
 
 const AppSettingsOptions = ({ item, navigation }) => {
 	const navigateToSettingsOption = useCallback(() => {
-		navigation.navigate(SETTINGS_OPTION_SCREEN, { screenName: item.screenName });
+		navigation.navigate(SETTINGS_OPTION_SCREEN, { ...item.screenName });
 	},[]);
 
 	return (

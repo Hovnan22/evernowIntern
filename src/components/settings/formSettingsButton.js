@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		alignItems: "center",
 		width: "100%",
+		bottom: 30,
 	},
 
 	inputBg: {

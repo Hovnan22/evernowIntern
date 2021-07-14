@@ -73,6 +73,7 @@ export const settingsScreen = [
 		name: SETTINGS_OPTION_SCREEN,
 		component: AppSetingsOptionScreen,
 		iconName: "settings",
+		options: {tabBarVisible: false}
 
 	},
 ];

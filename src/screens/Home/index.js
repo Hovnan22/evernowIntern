@@ -28,10 +28,6 @@ const HomeScreen = ({setIsLoggedIn}) => {
 	return (
 		<AppWrapper>
 			<View style={styles.container}>
-				{/* <View style={styles.topBgBlock}> */}
-
-				{/* <AppImage url={topBg} style={styles.inputBg} /> */}
-				{/* </View> */}
 				<AppButton
 					textStyle={styles.registrationButtonsText}
 					style={styles.logOut}
