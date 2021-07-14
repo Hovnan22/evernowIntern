@@ -1,10 +1,11 @@
 import React, { useCallback, useState } from "react";
 import {
-	FlatList,
-	TouchableOpacity,
-	StyleSheet,
 	Text,
 	View,
+	FlatList,
+	Platform,
+	StyleSheet,
+	TouchableOpacity,
 } from "react-native";
 import { connect } from "react-redux";
 
@@ -21,6 +22,7 @@ import {
 import { StorageService } from "../../services";
 import { isLoggedIn } from "../../actions/app";
 import { SETTINGSOPTION } from "../../components/constants/settings";
+import ImagePicker from "react-native-image-picker";
 
 
 
@@ -29,12 +31,46 @@ const AppSettings = ({ navigation, setIsLoggedIn }) => {
 	const logOut = useCallback(async () => {
 		await StorageService.setAuth(false);
 		setIsLoggedIn(false);
-
 	}, []);
 
 	const closeHandler = useCallback(async () => {
-		setChangeAvatar(false);
+		if (Platform.OS == "android"){
+			setChangeAvatar(false);
+		} else {
+			var options = {
+				title: "Select Image",
+				customButtons: [
+					{
+						name: "customOptionKey",
+						title: "Choose file from Custom Option",
+					},
+				],
+				storageOptions: {
+					skipBackup: true,
+					path: "images",
+				},
+			};
+
+			ImagePicker.showImagePicker(options, res => {
+				console.log("Response = ", res);
+
+				if (res.didCancel) {
+					console.log("User cancelled image picker");
+				} else if (res.error) {
+					console.log("ImagePicker Error: ", res.error);
+				} else if (res.customButton) {
+					console.log("User tapped custom button: ", res.customButton);
+				} else {
+					let source = res;
+					this.setState({
+						resourcePath: source,
+					});
+				}
+			});
+		}
+
 	}, []);
+	
 
 	return (
 		<AppWrapper>

@@ -14,10 +14,10 @@ const AppUserInfo = ({navigation,changeAvatar,setChangeAvatar}) => {
 
 	const EditAvatar = useCallback(
 		() => {
-			setChangeAvatar(true)
+			setChangeAvatar(true);
 		}, []
 	);
-  const EditName = useCallback(
+	const EditName = useCallback(
 		() => {
 			navigation.navigate(SETTINGS_OPTION_SCREEN, {showEditName: true});
 		}, []

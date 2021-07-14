@@ -8,14 +8,14 @@ import {
 import { SETTINGS_OPTION_SCREEN } from "../../navigation/screens";
 
 
-const AppSettingsOptions = ({ item, navigation }) => {
+const AppSettingsOptions = ({ item, navigation, timezon, press }) => {
 	const navigateToSettingsOption = useCallback(() => {
 		navigation.navigate(SETTINGS_OPTION_SCREEN, { ...item.screenName });
 	},[]);
 
 	return (
 		<View style={styles.options}>
-			<TouchableOpacity onPress={ navigateToSettingsOption } style={styles.option}>
+			<TouchableOpacity onPress={  timezon ? press : navigateToSettingsOption } style={styles.option}>
 				<Text>{item.name}</Text>
 			</TouchableOpacity>
 		</View>
