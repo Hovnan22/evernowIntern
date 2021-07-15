@@ -2,6 +2,7 @@ import React from "react";
 import {
 	View,
 	StyleSheet,
+	Dimensions,
 	ImageBackground,
 } from "react-native";
 
@@ -10,36 +11,37 @@ import {
 } from ".";
 import gradientBg from "../../../src/assets/images/welcomeBg.png";
 
+
+const { width } = Dimensions.get("screen");
+
 const AppFormButtonsBlock = ({
 	buttonsArray,
 }) =>  (
 	<ImageBackground   source={gradientBg} style={styles.inputBg} resizeMode="stretch" >
 		<View style={styles.buttons}>
 			{buttonsArray.map( items => (
-				<AppButton
-					key={items.name}
-					textStyle={items.textStyle}
-					name={items.name}
-					style={[items.style]}
-					press={items.press}
-					type={items.type}
-				/>
+				<View 	key={items.name} style={styles.buttonsItem}>
+					<AppButton
+						{...items}
+					/>
+				</View>
 			))}
 		</View>
 	</ImageBackground>
 );
 
 const styles = StyleSheet.create({
-
 	buttons: {
 		zIndex: 1,
 		position: "absolute",
 		bottom: 0,
 		flex: 1,
-		alignItems: "center",
-		width: "100%",
+		width: width - 80,
+		marginHorizontal: 40,
 	},
-
+	buttonsItem: {
+		marginVertical: 5,
+	},
 	inputBg: {
 		position: "absolute",
 		bottom: 0,
@@ -52,7 +54,6 @@ const styles = StyleSheet.create({
 		bottom: 30,
 		zIndex: 2,
 	},
-
 });
 
 export default AppFormButtonsBlock;

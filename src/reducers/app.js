@@ -4,12 +4,12 @@ const initalState = {
 	isLoggedIn: false,
 };
 
-export default (state = initalState, action) => {
-	switch (action.type) {
+export default (state = initalState, {type, payload}) => {
+	switch (type) {
 	case LOGIN: {
 		return {
 			...state,
-			isLoggedIn: action.payload,
+			isLoggedIn: payload,
 		};
 	}
 	default: {

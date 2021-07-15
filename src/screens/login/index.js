@@ -4,6 +4,7 @@ import {
 	StyleSheet,
 } from "react-native";
 import { connect } from "react-redux";
+import {useNavigation} from "@react-navigation/native";
 
 import { StorageService } from "../../services";
 import { isLoggedIn } from "../../actions/app";
@@ -22,7 +23,8 @@ import {
 } from "../../navigation/screens";
 
 
-const LoginScreen = ({ navigation, setIsLoggedIn }) => {
+const LoginScreen = ({ setIsLoggedIn }) => {
+	const navigation = useNavigation();
 	const [email, changeEmail] = useState("user1@example.com");
 	const [password, changePassword] = useState("passwoord");
 	const [onLogin] = useLogin();
@@ -54,25 +56,23 @@ const LoginScreen = ({ navigation, setIsLoggedIn }) => {
 
 	const buttonsArray = [
 		{
-			textStyle: {color: "#fff"},
 			name: "Login",
-			style: styles.login,
+			borderColor: styles.whiteBorder,
 			press: login,
 			type: "border",
+			textColor: styles.loginText,
 		},
 		{
-			textStyle: {color: "#fff"},
+			borderColor: styles.registration,
 			name: "Registration",
-			style: styles.registration,
 			press: goToregistration,
-			type: "transparent",
+			type: "border",
+			textColor: styles.loginText,
 		},
 		{
-			textStyle: {color: "#fff", opacity: 0.3},
 			name: "Privacy Policy",
-			style: styles.policy,
 			press: goToPolicy,
-			type: "transparent",
+			type: "link",
 		},
 	];
 
@@ -93,24 +93,18 @@ const LoginScreen = ({ navigation, setIsLoggedIn }) => {
 };
 
 const styles = StyleSheet.create({
-
-	policy: {
-		alignItems: "center",
-		width: 300,
-		marginVertical: 10,
+	whiteBorder: {
+		borderColor: "rgb(255,255,255)",
+	},
+	loginText: {
+		color: "rgb(255,255,255)",
 	},
 	registration: {
-		width: 300,
-		borderRadius: 10,
-		height: 60,
-		backgroundColor: "rgba(0,0,0,0)",
-		alignItems: "center",
-		marginTop: 25,
+		borderColor: "rgba(0,0,0,0)",
 	},
 	login: {
 		borderColor: "#fff",
 		borderWidth: 2,
-
 	},
 	container: {
 		width: "100%",

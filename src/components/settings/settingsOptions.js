@@ -6,34 +6,29 @@ import {
 	TouchableOpacity,
 } from "react-native";
 import { SETTINGS_OPTION_SCREEN } from "../../navigation/screens";
+import {useNavigation} from "@react-navigation/native";
 
 
-const AppSettingsOptions = ({ item, navigation, timezon, press }) => {
+const AppSettingsOptions = ({ item, logOut, timezon, press }) => {
+	const navigation = useNavigation();
 	const navigateToSettingsOption = useCallback(() => {
-		navigation.navigate(SETTINGS_OPTION_SCREEN, { ...item.screenName });
+		navigation.navigate(SETTINGS_OPTION_SCREEN, { screenName: item.screenName });
 	},[]);
 
 	return (
 		<View style={styles.options}>
-			<TouchableOpacity onPress={  timezon ? press : navigateToSettingsOption } style={styles.option}>
+			<TouchableOpacity onPress={  (timezon || logOut) ? press : navigateToSettingsOption } style={styles.option}>
 				<Text>{item.name}</Text>
 			</TouchableOpacity>
 		</View>
 	);
 };
 
-
-
 const styles = StyleSheet.create({
-	options: {
-
-	},
 	option: {
 		flexDirection: "row",
 		height: 75,
 		alignItems: "center",
-		borderBottomColor: "#76767669",
-		borderBottomWidth: 1,
 		marginHorizontal: 25,
 	},
 });

@@ -2,37 +2,33 @@ import React, { useCallback, useState } from "react";
 import {
 	View,
 	Text,
+	Dimensions,
 	StyleSheet,
 	ImageBackground,
-	Dimensions,
 } from "react-native";
 
-import {
-	AppButton,
-} from "../ui";
+import { AppButton } from "../ui";
 import gradientBg from "../../../src/assets/images/welcomeBg.png";
 
 
-const width = Dimensions.get("window").width;
+const { width } = Dimensions.get("window");
 
-const AppformSettingsButton = ({
-	changeEmail,
-}) =>  {
+const AppformSettingsButton = ({ changeEmail }) =>  {
 	const [emailInfo,setEmailInfo ] = useState(false);
 	const saveHandler = useCallback(
 		() => {
 			changeEmail && setEmailInfo(true);
-		}, []
+		},
+		[changeEmail]
 	);
 	return (
 		<ImageBackground   source={gradientBg} style={styles.inputBg} resizeMode="stretch" >
 			<View style={styles.buttons}>
 				{ emailInfo && <Text style={styles.emailInfo}>A confirmation email will be sent to a new mail</Text>}
 				<AppButton
-					textStyle={styles.textStyle}
 					name={"Save"}
-					style={styles.save}
 					press={saveHandler}
+					type="border"
 				/>
 			</View>
 		</ImageBackground>
@@ -58,9 +54,9 @@ const styles = StyleSheet.create({
 		zIndex: 1,
 		position: "absolute",
 		flex: 1,
-		alignItems: "center",
-		width: "100%",
+		width: width - 80,
 		bottom: 30,
+		marginHorizontal: 40,
 	},
 
 	inputBg: {
@@ -69,11 +65,6 @@ const styles = StyleSheet.create({
 		zIndex: 1,
 		width: "100%",
 		height: 430,
-	},
-	buttonBg: {
-		flex: 1,
-		bottom: 30,
-		zIndex: 2,
 	},
 
 });

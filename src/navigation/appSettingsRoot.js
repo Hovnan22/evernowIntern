@@ -6,17 +6,15 @@ import { settingsScreen } from "./screensArray";
 const Stack = createStackNavigator();
 const SettingsRoot = () => (
 	<Stack.Navigator
-	screenOptions={({ route }) => {
-		return ({
+		screenOptions={() => ({
 			headerShown: false,
 			tabBarVisible: false,
-		})
-	}}>
+		})}>
 		{settingsScreen.map(screen => (
 			<Stack.Screen {...screen}
 				key={screen.name}
 				options={{
-					tabBarVisible: false
+					tabBarVisible: false,
 				}}
 			/>
 		))}

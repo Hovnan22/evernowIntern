@@ -4,6 +4,8 @@ import {
 	FlatList,
 	StyleSheet,
 } from "react-native";
+import {useNavigation} from "@react-navigation/native";
+
 import {
 	AppSettingsOptions,
 	AppSettingsInputField,
@@ -14,40 +16,34 @@ import {
 } from "../../components/ui";
 import { APPLANGUAGE } from "../../components/constants/settings";
 
-const AppSetingsOptionScreen = ({
-	route,
-	navigation,
-}) => {
-	const { classTime, timeZon,changeLanguage, changePassword, changeEmail, showEditName ,showEditAvatar } = route.params;
+const AppSetingsOptionScreen = ({ route }) => {
+	const navigation = useNavigation();
+	const { screenName } = route.params;
 	const flatListRef = useRef();
+
 	return (
 		<AppWrapper navigation={navigation}>
-			{changeLanguage && (
+			{ (screenName === "changeLanguage")  && (
 				<FlatList
 					style={styles.languages}
 					ref={flatListRef}
 					data={APPLANGUAGE}
-					keyExtractor={(item, index) => index.toString()}
-					renderItem={({item}) => <AppSettingsOptions
-						item={item}
-						navigation={navigation}
-					/>
-					}
+					keyExtractor={(_, index) => index.toString()}
+					renderItem={({item}) => (
+						<AppSettingsOptions
+							screenName={screenName}
+							item={item}
+						/>
+					)}
 				/>
 			)}
-			{!changeLanguage && (<View style={styles.container}>
+			{!(screenName === "changeLanguage") && (<View style={styles.container}>
 				<AppSettingsInputField
-					timeZon={timeZon}
-					classTime={classTime}
-					changeEmail={changeEmail}
-					changeLanguage={changeLanguage}
-					changePassword={changePassword}
-					showEditName={showEditName}
-					showEditAvatar={showEditAvatar}
+					screenName={screenName}
 				/>
 				<AppformSettingsButton
-					timeZon={timeZon}
-					changeEmail={changeEmail}
+					timeZon={8}
+					changeEmail={8}
 				/>
 			</View>)}
 		</AppWrapper>

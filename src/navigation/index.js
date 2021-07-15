@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { connect } from "react-redux";
 import WelcomeRoot from "./welcomeRoot";
@@ -9,10 +9,11 @@ import  AppServices  from "./../services/services";
 const AppNavigationContainer = ({ isLoggedIn }) => {
 	const [isReady,setIsReady] = useState(false);
 	const navigationRef = React.useRef(null);
-	useEffect( async () => {
-		await AppServices.checkStatus();
-		setIsReady(true);
-	},[]);
+	useEffect(
+		async () => {
+			await AppServices.checkStatus();
+			setIsReady(true);
+		},[]);
 
 	return (
 		<NavigationContainer

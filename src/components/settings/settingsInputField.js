@@ -18,75 +18,87 @@ import whiteBg from "../../../src/assets/images/whiteBg.png";
 
 
 const windowWidth = Dimensions.get("window").width;
-const AppSettingsInputField = ({
-	timeZon,
-	classTime,
-	changeEmail,
-	showEditName,
-	changePassword,
-}) =>  {
 
+const AppSettingsInputField = ({ screenName }) =>  {
 	const [email,seteEmail] = useState();
 	const [name,setNamel] = useState();
 	const [timeZonName, setTimeZonName] = useState("EUTC + 03 Moscow");
 	const [timezonList, setTimezonList] = useState(false);
-
 	const showTimezonList = useCallback(
 		() => {
 			setTimezonList(true);
 		}, []);
 
 	const selectTimeZon = useCallback(
-		( name ) => {
+		() => {
 			setTimeZonName(name);
 			setTimezonList(false);
 		},[]);
+	const contant = {
+		classTime: {
+			title: "What time do you want to meditate with buddy?",
+		},
+		timeZone: {
+			title: "Choose your time zone",
+		},
+		changeEmail: {
+			title: "Change Email",
+			input: [
+				{
+					placeholder: "Email",
+					changeEvent: seteEmail,
+					textValue: email,
+				},
+			],
+		},
+		changePassword: {
+			title: "Change Password",
+			input: [
+				{
+					placeholder: "Old Password",
+					changeEvent: setNamel,
+					textValue: name,
+				},
+				{
+					placeholder: "New Password",
+					changeEvent: setNamel,
+					textValue: name,
+				},
+			],
+		},
+		showEditName: {
+			title: "Old Name",
+			input: [
+				{
+					placeholder: "Name",
+					changeEvent: setNamel,
+					textValue: name,
+				},
+			],
+		},
+	};
 
 	return (
 		<View style={styles.inputBlock}>
 			<ImageBackground   source={whiteBg} style={[styles.inputBg,
-				(changeEmail || showEditName) && styles.nameBlock,
+				(screenName === "changeEmail" || screenName === "showEditName") && styles.nameBlock,
 			]} resizeMode="stretch" >
 				<Text style={styles.info}>
-					{changeEmail && "Change Email"}
-					{showEditName && "Change Name"}
-					{changePassword && "Change Password"}
-					{timeZon && "Choose your time zone"}
-					{classTime && "What time do you want to meditate with buddy?"}
+					{contant[screenName].title}
 				</Text>
-				{changeEmail && <AppInput
-					styles={styles.email}
-					placeholder={changeEmail && "Email"}
-					placeholderColor="#005189"
-					changeEvent={seteEmail}
-					textValue={email}
-				/>}
-				{showEditName && <AppInput
-					styles={styles.email}
-					placeholder="Name"
-					placeholderColor="#005189"
-					changeEvent={setNamel}
-					textValue={name}
-				/>}
-				{changePassword &&
-				(<View>
-					<AppInput
-						styles={styles.email}
-						placeholder="Old Password"
-						placeholderColor="#005189"
-						changeEvent={setNamel}
-						textValue={name}
-					/>
-					<AppInput
-						styles={styles.email}
-						placeholder="New Password"
-						placeholderColor="#005189"
-						changeEvent={setNamel}
-						textValue={name}
-					/>
-				</View>
-				)}
-				{timeZon && (
+				 {
+					contant[screenName].input && contant[screenName].input.map((item) => (
+						<AppInput
+							key={item.name}
+							styles={styles.email}
+							placeholder={item.placeholder}
+							placeholderColor="#005189"
+							changeEvent={item.changeEvent}
+							textValue={item.textValue}
+						/>
+					))
+				}
+				{(screenName === "timeZone") && (
 					<TouchableOpacity onPress={showTimezonList} style={styles.timezon}>
 						<Text>{timeZonName}</Text>
 						<AppIcon
@@ -97,7 +109,7 @@ const AppSettingsInputField = ({
 						/>
 					</TouchableOpacity>
 				)}
-				{ classTime && (
+				{(contant[screenName].title === "classTime") && (
 					<View style={styles.slider}>
 						<Slider
 							thumbTintColor={"#5596D9"}
@@ -114,7 +126,6 @@ const AppSettingsInputField = ({
 	);
 };
 
-
 const styles = StyleSheet.create({
 	nameBlock: {
 		top: 120,
@@ -123,8 +134,6 @@ const styles = StyleSheet.create({
 	thumb: {
 		width: 15,
 		height: 15,
-	},
-	track: {
 	},
 	slider: {
 		marginHorizontal: 50,
@@ -136,11 +145,6 @@ const styles = StyleSheet.create({
 		borderBottomColor: "#EDF2FF",
 		borderBottomWidth: 1,
 		paddingBottom: 15,
-
-	},
-	forgotStyle: {
-		color: "#9A9CA8",
-		opacity: 0.4,
 	},
 	email: {
 		marginHorizontal: 30,
@@ -149,21 +153,10 @@ const styles = StyleSheet.create({
 		borderColor: "#EDF2FF",
 		marginBottom: 25,
 	},
-	marginVertical: {
-		marginVertical: 30,
-	},
 	inputBlock: {
 		width: windowWidth -  60,
 		marginTop: 100,
 		marginHorizontal: 30,
-	},
-	restorePass: {
-		color: "red",
-		fontSize: 14,
-		marginHorizontal: 30,
-		alignItems: "center",
-		marginVertical: 10,
-
 	},
 	inputBg: {
 		position: "absolute",
@@ -181,4 +174,3 @@ const styles = StyleSheet.create({
 });
 
 export default AppSettingsInputField;
-

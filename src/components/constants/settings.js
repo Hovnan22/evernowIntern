@@ -1,23 +1,23 @@
 export const	SETTINGSOPTION = [
 	{
 		name: "Change class times",
-		screenName: { classTime: true },
+		screenName: "classTime",
 	},
 	{
 		name: "Change timezone",
-		screenName: { timeZon: true },
+		screenName: "timeZone",
 	},
 	{
 		name: "Change email",
-		screenName: { changeEmail: true },
+		screenName:  "changeEmail",
 	},
 	{
 		name: "Change Password",
-		screenName: { changePassword: true },
+		screenName: "changePassword",
 	},
 	{
 		name: "Change the language",
-		screenName: { changeLanguage: true },
+		screenName: "changeLanguage",
 	},
 ];
 

@@ -1,11 +1,10 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback,  useState } from "react";
 import {
-	Text,
 	View,
 	FlatList,
 	Platform,
 	StyleSheet,
-	TouchableOpacity,
+	ActionSheetIOS,
 } from "react-native";
 import { connect } from "react-redux";
 
@@ -22,86 +21,90 @@ import {
 import { StorageService } from "../../services";
 import { isLoggedIn } from "../../actions/app";
 import { SETTINGSOPTION } from "../../components/constants/settings";
-import ImagePicker from "react-native-image-picker";
+import {useNavigation} from "@react-navigation/native";
 
 
-
-const AppSettings = ({ navigation, setIsLoggedIn }) => {
+const AppSettings = ({  setIsLoggedIn }) => {
+	const navigation = useNavigation();
 	const [changeAvatar, setChangeAvatar] = useState();
 	const logOut = useCallback(async () => {
 		await StorageService.setAuth(false);
 		setIsLoggedIn(false);
 	}, []);
 
-	const closeHandler = useCallback(async () => {
-		if (Platform.OS == "android"){
-			setChangeAvatar(false);
-		} else {
-			var options = {
-				title: "Select Image",
-				customButtons: [
-					{
-						name: "customOptionKey",
-						title: "Choose file from Custom Option",
-					},
-				],
-				storageOptions: {
-					skipBackup: true,
-					path: "images",
-				},
-			};
-
-			ImagePicker.showImagePicker(options, res => {
-				console.log("Response = ", res);
-
-				if (res.didCancel) {
-					console.log("User cancelled image picker");
-				} else if (res.error) {
-					console.log("ImagePicker Error: ", res.error);
-				} else if (res.customButton) {
-					console.log("User tapped custom button: ", res.customButton);
-				} else {
-					let source = res;
-					this.setState({
-						resourcePath: source,
-					});
-				}
-			});
-		}
-
+	const closeHandler = useCallback( () => {
+		setChangeAvatar(false);
 	}, []);
-	
+
+	const actionSheet = useCallback( () => {
+		ActionSheetIOS.showActionSheetWithOptions(
+			{
+				options: ["Cancel", "camera", "upload from media"],
+				destructiveButtonIndex: 2,
+				cancelButtonIndex: 0,
+				userInterfaceStyle: "dark",
+			},
+			buttonIndex => {
+				if (buttonIndex === 0) {
+
+				} else if (buttonIndex === 1) {
+
+				} else if (buttonIndex === 2) {
+				}
+			}
+		);
+	}, []);
+
+	const avatarHandler = useCallback(() => {
+		if (Platform.OS === "android"){
+			setChangeAvatar(true);
+		} else {
+			actionSheet();
+		}
+	},[]);
 
 	return (
 		<AppWrapper>
 			<View style={styles.container}>
-				{changeAvatar && <AppChangeAvatar closeHandler={closeHandler} />}
 				<FlatList
-					ListHeaderComponent={() => <AppUserInfo changeAvatar={changeAvatar} setChangeAvatar={setChangeAvatar} navigation={navigation} />}
+					ListHeaderComponent={() => (
+						<AppUserInfo
+							changeAvatar={changeAvatar}
+							setChangeAvatar={avatarHandler}
+							navigation={navigation}
+						/>)}
 					style={styles.options}
 					data={SETTINGSOPTION}
+					ItemSeparatorComponent={() => (<View style={styles.seperator} />)}
 					key={item => item.key}
-					renderItem={({ item }) => <AppSettingsOptions
-						item={item}
-						navigation={navigation}
-					/>}
-					ListFooterComponent={() => (<View >
-						<TouchableOpacity onPress={logOut} style={styles.logOut}>
-							<Text>logedOut</Text>
-						</TouchableOpacity>
-					</View>)}
+					renderItem={({ item }) => (
+						<AppSettingsOptions
+							item={item}
+						/>
+					)}
+					ListFooterComponent={() => (
+						<AppSettingsOptions
+							item={{ name: "logOut" }}
+							logOut={true}
+							press={logOut}
+						/>
+					)}
 					keyExtractor={item => item.name}
 				/>
+				{changeAvatar && <AppChangeAvatar closeHandler={closeHandler} />}
 			</View>
 		</AppWrapper>
 	);
 };
 
-
 const styles = StyleSheet.create({
 	container: {
 		width: "100%",
-		height: " 100%",
+		height: "100%",
+	},
+	seperator: {
+		borderBottomColor: "#76767669",
+		borderBottomWidth: 1,
 	},
 	options: {
 		top: 110,
@@ -110,8 +113,6 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		height: 75,
 		alignItems: "center",
-		borderBottomColor: "#76767669",
-		borderBottomWidth: 1,
 		marginHorizontal: 25,
 	},
 });

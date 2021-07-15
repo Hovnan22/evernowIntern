@@ -5,13 +5,15 @@ import {
 	StyleSheet,
 	TouchableOpacity,
 } from "react-native";
+import {useNavigation} from "@react-navigation/native";
+
 import { AppAvatar } from ".";
 import { AppIcon } from "../ui";
 import { SETTINGS_OPTION_SCREEN } from "../../navigation/screens";
 
 
-const AppUserInfo = ({navigation,changeAvatar,setChangeAvatar}) => {
-
+const AppUserInfo = ({changeAvatar,setChangeAvatar}) => {
+	const navigation = useNavigation();
 	const EditAvatar = useCallback(
 		() => {
 			setChangeAvatar(true);
@@ -19,7 +21,7 @@ const AppUserInfo = ({navigation,changeAvatar,setChangeAvatar}) => {
 	);
 	const EditName = useCallback(
 		() => {
-			navigation.navigate(SETTINGS_OPTION_SCREEN, {showEditName: true});
+			navigation.navigate(SETTINGS_OPTION_SCREEN, {screenName: "showEditName"});
 		}, []
 	);
 	return (
@@ -37,7 +39,8 @@ const AppUserInfo = ({navigation,changeAvatar,setChangeAvatar}) => {
 				height={16}
 			/>
 		</View>
-	);};
+	);
+};
 
 const styles = StyleSheet.create({
 	container: {

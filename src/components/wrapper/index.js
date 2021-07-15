@@ -4,10 +4,13 @@ import {
 	StatusBar,
 	StyleSheet,
 } from "react-native";
+import {useNavigation} from "@react-navigation/native";
+
 import { AppIconeButton } from ".";
 
 
-const AppWrapper = ({navigation,children,showBackBtn = true}) => {
+const AppWrapper = ({children,showBackBtn = true}) => {
+	const navigation = useNavigation();
 	const goBackHendler = () => {
 		navigation && navigation.canGoBack() &&  navigation.goBack();
 	};

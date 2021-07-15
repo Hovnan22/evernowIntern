@@ -39,21 +39,15 @@ const AppLoginInputField = ({
 				textValue={password}
 			/>
 			<AppButton
-				textStyle={styles.forgotStyle}
 				name={"Forgot password"}
-				style={styles.restorePass}
 				press={restorePassword}
-				type="border"
+				type="link"
 			/>
 		</ImageBackground>
 	</View>
 );
 
 const styles = StyleSheet.create({
-	forgotStyle: {
-		color: "#9A9CA8",
-		opacity: 0.4,
-	},
 	email: {
 		marginHorizontal: 30,
 		color: "#000",
@@ -68,14 +62,6 @@ const styles = StyleSheet.create({
 		marginTop: 100,
 		marginHorizontal: 30,
 	},
-	restorePass: {
-		color: "red",
-		fontSize: 14,
-		marginHorizontal: 30,
-		alignItems: "center",
-		marginVertical: 10,
-
-	},
 	inputBg: {
 		position: "absolute",
 		top: 0,
@@ -88,7 +74,6 @@ const styles = StyleSheet.create({
 		marginLeft: 30,
 		marginVertical: 25,
 	},
-
 });
 
 export default AppLoginInputField;

@@ -2,15 +2,15 @@ import React from "react";
 import {
 	View,
 	StyleSheet,
-	ImageBackground,
 } from "react-native";
+import {useNavigation} from "@react-navigation/native";
+
 import {
 	AppImage,
 	AppButton,
 	AppWrapper,
-	AppLinerButton,
 } from "../../components/ui";
-import { AppSocialButtons } from "../../components/welcome"
+import { AppSocialButtons } from "../../components/welcome";
 import icon from "../../../src/assets/images/logo.png";
 import whiteBg from "../../../src/assets/images/wilcomeWhiteBg.png";
 import gradientBg from "../../../src/assets/images/welcomeBg.png";
@@ -20,7 +20,8 @@ import {
 } from "../../navigation/screens";
 
 
-const WelcomeScreen = ({navigation}) => {
+const WelcomeScreen = () => {
+	const navigation = useNavigation();
 	const socialButtons = [
 		{
 			width: 32,
@@ -58,23 +59,17 @@ const WelcomeScreen = ({navigation}) => {
 					<AppImage width={320} height={320} url={whiteBg} />
 					<View style={styles.buttons}>
 						<AppButton
-							gradientButtonStyle={styles.gradientButton}
-							gradientColor={["#9AD1FF", "#0075C8"]}
-							style={styles.login}
-							start={{ x: 0, y: 0 }}
-							end={{ x: 1, y: 0 }}
 							press={goToLogin}
-							textStyle={styles.loginText}
 							name="Login"
 							type="gradient"
 						/>
-						<AppButton
-							name={"Registration"}
-							textStyle={styles.registrationButtonsText}
-							style={styles.registration}
-							press={goToRegistration}
-							type="border"
-						/>
+						<View style={styles.registerBtn}>
+							<AppButton
+								name={"Registration"}
+								press={goToRegistration}
+								type="border"
+							/>
+						</View>
 					</View>
 				</View>
 			</View>
@@ -83,20 +78,14 @@ const WelcomeScreen = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
-	registrationButtonsText: {
-		color: "#18a0fb",
-	},
-	loginText: {
-		color: "#fff",
-	},
+
 	buttons: {
 		zIndex: 1,
 		position: "absolute",
 		bottom: 0,
+		width: 260,
 	},
-	gradientButton: {
-		borderRadius: 10,
-	},
+
 	socialLogin: {
 		top: 120,
 		zIndex: 1,
@@ -107,27 +96,8 @@ const styles = StyleSheet.create({
 		fontSize: 25,
 		marginTop: 25,
 	},
-	login: {
-		width: 260,
-		borderRadius: 10,
-		height: 50,
-		backgroundColor: "rgba(0,0,0,0)",
-		flex: 1,
-		alignItems: "center",
-		justifyContent: "center",
-	},
-	registration: {
-		backgroundColor: "rgba(0,0,0,0)",
-		width: 260,
-		height: 50,
-		marginBottom: 30,
-		justifyContent: "center",
-		flex: 1,
-		alignItems: "center",
-		borderRadius: 10,
-		borderColor: "#18a0fb",
-		borderWidth: 2,
-		marginTop: 20,
+	registerBtn: {
+		marginVertical: 20,
 	},
 	container: {
 		width: "100%",

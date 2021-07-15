@@ -1,15 +1,16 @@
 import React from "react";
 import {
 	View,
-	ImageBackground,
+	Image,
 	StyleSheet,
 } from "react-native";
+
 import avatar from "../../assets/images/avatar.png";
 
 
 const AppAvatar = ({style}) => (
 	<View style={[styles.avatarBlock,style]}>
-		<ImageBackground
+		<Image
 			style={styles.avatar}
 			source={avatar}
 		/>
@@ -20,7 +21,6 @@ const styles = StyleSheet.create({
 	avatar:{
 		width: 50,
 		height: 50,
-
 	},
 	avatarBlock: {
 		borderRadius: 25,
