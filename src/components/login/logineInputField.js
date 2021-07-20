@@ -13,7 +13,7 @@ import {
 } from "../ui";
 import whiteBg from "../../../src/assets/images/whiteBg.png";
 
-const windowWidth = Dimensions.get("window").width;
+const { width } = Dimensions.get("window");
 const AppLoginInputField = ({
 	email,
 	password,
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
 		marginVertical: 30,
 	},
 	inputBlock: {
-		width: windowWidth -  60,
+		width: width -  60,
 		marginTop: 100,
 		marginHorizontal: 30,
 	},

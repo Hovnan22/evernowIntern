@@ -4,7 +4,7 @@ import {
 	TextInput,
 } from "react-native";
 
-const AppInput = ({styles,changeEvent,textValue = "",placeholder,placeholderColor = "#EDF2FF"}) => (
+const AppInput = ({ styles,changeEvent,textValue = "", placeholder, placeholderColor = "#EDF2FF" }) => (
 	<View>
 		<TextInput
 			style={[styles]}

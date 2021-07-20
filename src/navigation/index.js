@@ -1,31 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
+
 import WelcomeRoot from "./welcomeRoot";
 import AppRoot from "./appRoot";
-import  AppServices  from "./../services/services";
 
+import AppServices from "./../services/services";
 
-const AppNavigationContainer = ({ isLoggedIn }) => {
-	const [isReady,setIsReady] = useState(false);
-	const navigationRef = React.useRef(null);
-	useEffect(
-		async () => {
+const AppNavigationContainer = () => {
+	
+	const [isReady, setIsReady] = useState(false);
+	const isLoggedIn = useSelector(({app}) => app.isLoggedIn)
+
+	useEffect( () => {
+		async function isRedyAppServices () {
 			await AppServices.checkStatus();
 			setIsReady(true);
-		},[]);
+		}
+		isRedyAppServices();
+	}, []);
 
 	return (
-		<NavigationContainer
-			ref={navigationRef}
-		>
-			{ isReady  && (isLoggedIn ? <AppRoot navigationRef={navigationRef} /> : <WelcomeRoot />) }
+		<NavigationContainer >
+			{isReady && (isLoggedIn ? <AppRoot /> : <WelcomeRoot />)}
 		</NavigationContainer>
 	);
 };
 
-const mapStateToProps = ({ app: { isLoggedIn } }) => ({
-	isLoggedIn,
-});
-
-export default connect(mapStateToProps)(AppNavigationContainer);
+export default AppNavigationContainer;

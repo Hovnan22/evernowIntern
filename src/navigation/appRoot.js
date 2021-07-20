@@ -1,24 +1,22 @@
 import React from "react";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { tabRootScreens } from "./screensArray";
-import { SETTINGS_OPTION_SCREEN } from "./screens";
+import { createStackNavigator } from "@react-navigation/stack";
 
-const Tab = createBottomTabNavigator();
-const AppRoot = ({ navigationRef }) => (
-	<Tab.Navigator
-		screenOptions={({ route }) => ({
+import { logedinRootNavigation } from "./screensArray";
+
+const Stack = createStackNavigator();
+
+const AppRoot = () => (
+	<Stack.Navigator
+		screenOptions={() => ({
 			headerShown: false,
-			tabBarVisible: (navigationRef.current?.getCurrentRoute() && navigationRef.current?.getCurrentRoute().name === SETTINGS_OPTION_SCREEN ? false : true),
-		})}
-		tabBarOptions={{ showLabel: false }}
-	>
-		{tabRootScreens.map((tab, index) => (
-			<Tab.Screen
-				key={tab.name} {...tab}
+			tabBarVisible: false,
+		})}>
+		{logedinRootNavigation.map(screen => (
+			<Stack.Screen {...screen}
+				key={screen.name}
 			/>
-		))
-		}
-	</Tab.Navigator>
+		))}
+	</Stack.Navigator>
 );
 
 export default AppRoot;

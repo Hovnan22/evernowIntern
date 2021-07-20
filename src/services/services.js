@@ -7,7 +7,6 @@ import { Store } from "../config";
 import { isLoggedIn } from "../actions/app";
 import { StorageService } from ".";
 
-
 export default class AppServices  {
 
 	static async checkStatus () {

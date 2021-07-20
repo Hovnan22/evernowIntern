@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useCallback } from "react";
 import {
 	View,
 	StyleSheet,
 } from "react-native";
-import {useNavigation} from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 
 import {
 	AppImage,
@@ -14,6 +14,7 @@ import { AppSocialButtons } from "../../components/welcome";
 import icon from "../../../src/assets/images/logo.png";
 import whiteBg from "../../../src/assets/images/wilcomeWhiteBg.png";
 import gradientBg from "../../../src/assets/images/welcomeBg.png";
+
 import {
 	LOGIN_SCREEN,
 	REGISTRATION_SCREEN,
@@ -39,8 +40,10 @@ const WelcomeScreen = () => {
 			iconName: "vk",
 		},
 	];
-	const goToLogin = () => navigation.navigate( LOGIN_SCREEN );
-	const goToRegistration = () => navigation.navigate(REGISTRATION_SCREEN);
+
+	const goToLogin = useCallback(() => navigation.navigate( LOGIN_SCREEN ),[]);
+	const goToRegistration = useCallback(() => navigation.navigate(REGISTRATION_SCREEN),[]);
+
 	return (
 		<AppWrapper showBackBtn={false}>
 			<View style={styles.container}>
@@ -67,7 +70,7 @@ const WelcomeScreen = () => {
 							<AppButton
 								name={"Registration"}
 								press={goToRegistration}
-								type="border"
+								type="primary"
 							/>
 						</View>
 					</View>
@@ -78,14 +81,12 @@ const WelcomeScreen = () => {
 };
 
 const styles = StyleSheet.create({
-
 	buttons: {
 		zIndex: 1,
 		position: "absolute",
 		bottom: 0,
 		width: 260,
 	},
-
 	socialLogin: {
 		top: 120,
 		zIndex: 1,

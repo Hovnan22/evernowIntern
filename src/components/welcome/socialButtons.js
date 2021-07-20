@@ -6,8 +6,7 @@ import {
 
 import { AppIconeButton } from "../ui";
 
-
-const AppSocialButtons = ({socialLoginStyles,socialIconsStyles,socialButtons}) => (
+const AppSocialButtons = ({ socialLoginStyles, socialIconsStyles, socialButtons }) => (
 	<View style={socialLoginStyles}>
 		<Text>Login via social network</Text>
 		<View style={socialIconsStyles}>

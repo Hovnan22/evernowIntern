@@ -11,6 +11,11 @@ const components = {
 	"settings": React.lazy(() => import("../../assets/icons/settings.svg")),
 	"edit": React.lazy(() => import("../../assets/icons/edit.svg")),
 	"arrowDown": React.lazy(() => import("../../assets/icons/arrowDown.svg")),
+	"close": React.lazy(() => import("../../assets/icons/close.svg")),
+	"video-camera": React.lazy(() => import("../../assets/icons/video-camera.svg")),
+	"mute": React.lazy(() => import("../../assets/icons/mute.svg")),
+	"meditationSettings": React.lazy(() => import("../../assets/icons/meditationSettings.svg")),
+	"yog": React.lazy(() => import("../../assets/icons/yog.svg")),
 };
 
 const RenderIcon = ({icon, style, ...props}) => {

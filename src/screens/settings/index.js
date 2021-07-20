@@ -1,4 +1,8 @@
-import React, { useCallback,  useState } from "react";
+import React, 
+{ 
+	useState, 
+	useCallback,
+} from "react";
 import {
 	View,
 	FlatList,
@@ -6,7 +10,8 @@ import {
 	StyleSheet,
 	ActionSheetIOS,
 } from "react-native";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useNavigation } from "@react-navigation/native";
 
 import {
 	AppChangeAvatar,
@@ -21,19 +26,19 @@ import {
 import { StorageService } from "../../services";
 import { isLoggedIn } from "../../actions/app";
 import { SETTINGSOPTION } from "../../components/constants/settings";
-import {useNavigation} from "@react-navigation/native";
 
-
-const AppSettings = ({  setIsLoggedIn }) => {
+const AppSettings = () => {
+	const dispatch = useDispatch();
 	const navigation = useNavigation();
-	const [changeAvatar, setChangeAvatar] = useState();
+	const [isAvatarVisible, setIsAvatarVisible] = useState();
+	
 	const logOut = useCallback(async () => {
 		await StorageService.setAuth(false);
-		setIsLoggedIn(false);
+		dispatch(isLoggedIn(false));
 	}, []);
 
 	const closeHandler = useCallback( () => {
-		setChangeAvatar(false);
+		setIsAvatarVisible(false);
 	}, []);
 
 	const actionSheet = useCallback( () => {
@@ -57,7 +62,7 @@ const AppSettings = ({  setIsLoggedIn }) => {
 
 	const avatarHandler = useCallback(() => {
 		if (Platform.OS === "android"){
-			setChangeAvatar(true);
+			setIsAvatarVisible(true);
 		} else {
 			actionSheet();
 		}
@@ -65,18 +70,16 @@ const AppSettings = ({  setIsLoggedIn }) => {
 
 	return (
 		<AppWrapper>
-			<View style={styles.container}>
+			<View style={styles.container} >
 				<FlatList
+					data={SETTINGSOPTION}
+					keyExtractor={item => item.name}
 					ListHeaderComponent={() => (
 						<AppUserInfo
-							changeAvatar={changeAvatar}
 							setChangeAvatar={avatarHandler}
 							navigation={navigation}
 						/>)}
-					style={styles.options}
-					data={SETTINGSOPTION}
 					ItemSeparatorComponent={() => (<View style={styles.seperator} />)}
-					key={item => item.key}
 					renderItem={({ item }) => (
 						<AppSettingsOptions
 							item={item}
@@ -89,9 +92,8 @@ const AppSettings = ({  setIsLoggedIn }) => {
 							press={logOut}
 						/>
 					)}
-					keyExtractor={item => item.name}
 				/>
-				{changeAvatar && <AppChangeAvatar closeHandler={closeHandler} />}
+				{isAvatarVisible && <AppChangeAvatar closeHandler={closeHandler} />}
 			</View>
 		</AppWrapper>
 	);
@@ -101,13 +103,11 @@ const styles = StyleSheet.create({
 	container: {
 		width: "100%",
 		height: "100%",
+		paddingTop: 110,
 	},
 	seperator: {
 		borderBottomColor: "#76767669",
 		borderBottomWidth: 1,
-	},
-	options: {
-		top: 110,
 	},
 	logOut: {
 		flexDirection: "row",
@@ -116,8 +116,5 @@ const styles = StyleSheet.create({
 		marginHorizontal: 25,
 	},
 });
-const mapDispatchToProps = dispatch => ({
-	setIsLoggedIn: loginStatus => dispatch(isLoggedIn(loginStatus)),
-});
 
-export default connect(null, mapDispatchToProps)(AppSettings);
+export default AppSettings;

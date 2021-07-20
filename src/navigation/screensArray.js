@@ -22,9 +22,8 @@ import {
 	REGISTRATION_SCREEN,
 	RESTOREPASSWORD_SCREEN,
 } from "./screens";
-import HomeRoot from "./homeRoot";
-import SettingsRoot from "./appSettingsRoot"
 import { AppIcon } from "../components/ui";
+import TabNavigation from "./tabNavigation";
 
 export const welcomeRootScreens = [
 	{
@@ -49,48 +48,24 @@ export const welcomeRootScreens = [
 	},
 ];
 
-export const homeScreen = [
+export const logedinRootNavigation = [
 	{
 		name: HOME_SCREEN,
-		component: HomeScreen,
-		iconName: "home",
-	},
-	{
-		name: MEDITATION_SCREEN,
-		component: AppMeditation,
-		iconName: "yoga",
-	},
-
-];
-
-export const settingsScreen = [
-	{
-		name: SETTINGS_SCREEN,
-		component: AppSettings,
-		iconName: "settings",
+		component: TabNavigation,
 	},
 	{
 		name: SETTINGS_OPTION_SCREEN,
 		component: AppSetingsOptionScreen,
-		iconName: "settings",
-		options: { tabBarVisible: false },
+		options: {
+			tabBarVisible: false
+		},
 	},
-];
+]
 
 export const tabRootScreens = [
 	{
-		name: SETTINGS_SCREEN,
-		component: SettingsRoot,
-		iconName: "settings",
-		options: {
-			tabBarIcon: () => (
-				<AppIcon icon="settings" width={24} height={24} fill="white" />
-			),
-		},
-	},
-	{
 		name: HOME_SCREEN,
-		component: HomeRoot,
+		component: HomeScreen,
 		options: {
 			tabBarIcon: () => (
 				<AppIcon icon="home" width={24} height={24} fill="white" />
@@ -104,7 +79,17 @@ export const tabRootScreens = [
 			tabBarIcon: () => (
 				<AppIcon icon="yoga" width={24} height={24} fill="white" />
 			),
+			tabBarVisible: false,
 		},
 	},
-
+	{
+		name: SETTINGS_SCREEN,
+		component: AppSettings,
+		iconName: "settings",
+		options: {
+			tabBarIcon: () => (
+				<AppIcon icon="settings" width={24} height={24} fill="white" />
+			),
+		},
+	},
 ];

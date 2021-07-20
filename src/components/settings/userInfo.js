@@ -12,18 +12,17 @@ import { AppIcon } from "../ui";
 import { SETTINGS_OPTION_SCREEN } from "../../navigation/screens";
 
 
-const AppUserInfo = ({changeAvatar,setChangeAvatar}) => {
+const AppUserInfo = ({ setChangeAvatar }) => {
 	const navigation = useNavigation();
-	const EditAvatar = useCallback(
-		() => {
-			setChangeAvatar(true);
-		}, []
-	);
+	const EditAvatar = useCallback(() => {
+		setChangeAvatar(true);
+	}, []);
 	const EditName = useCallback(
 		() => {
 			navigation.navigate(SETTINGS_OPTION_SCREEN, {screenName: "showEditName"});
 		}, []
 	);
+	
 	return (
 		<View style={styles.container}>
 			<TouchableOpacity onPress={EditAvatar}>

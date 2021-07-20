@@ -10,7 +10,6 @@ import {
 import { AppButton } from "../ui";
 import gradientBg from "../../../src/assets/images/welcomeBg.png";
 
-
 const { width } = Dimensions.get("window");
 
 const AppformSettingsButton = ({ changeEmail }) =>  {
@@ -28,7 +27,7 @@ const AppformSettingsButton = ({ changeEmail }) =>  {
 				<AppButton
 					name={"Save"}
 					press={saveHandler}
-					type="border"
+					type="success"
 				/>
 			</View>
 		</ImageBackground>
@@ -66,7 +65,6 @@ const styles = StyleSheet.create({
 		width: "100%",
 		height: 430,
 	},
-
 });
 
 export default AppformSettingsButton;

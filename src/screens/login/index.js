@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import {
 	View,
 	StyleSheet,
 } from "react-native";
-import { connect } from "react-redux";
 import {useNavigation} from "@react-navigation/native";
+import { useDispatch } from "react-redux";
 
 import { StorageService } from "../../services";
 import { isLoggedIn } from "../../actions/app";
@@ -22,14 +22,15 @@ import {
 	RESTOREPASSWORD_SCREEN,
 } from "../../navigation/screens";
 
+const LoginScreen = () => {
 
-const LoginScreen = ({ setIsLoggedIn }) => {
+	const dispatch = useDispatch();
 	const navigation = useNavigation();
 	const [email, changeEmail] = useState("user1@example.com");
 	const [password, changePassword] = useState("passwoord");
 	const [onLogin] = useLogin();
 
-	const login = async () => {
+	const login = useCallback(async () => {
 		const variables = {
 			email: email,
 			password: password,
@@ -37,37 +38,34 @@ const LoginScreen = ({ setIsLoggedIn }) => {
 		try {
 			const data = await onLogin({ variables });
 			await StorageService.setAuth(data);
-			setIsLoggedIn(true);
+			dispatch(isLoggedIn(true));
 		} catch (err) {
 			console.log(err);
 		}
-	};
+	},[]);
 
-	const restorePassword = () => {
+	const restorePassword = useCallback(() => {
 		navigation.navigate(RESTOREPASSWORD_SCREEN);
-	};
-	const goToregistration = () => {
-		navigation.navigate(REGISTRATION_SCREEN);
-	};
+	},[]);
 
-	const goToPolicy = () => {
+	const goToregistration = useCallback(() => {
+		navigation.navigate(REGISTRATION_SCREEN);
+	},[]);
+
+	const goToPolicy = useCallback(() => {
 		navigation.navigate(POLICY_SCREEN);
-	};
+	},[]);
 
 	const buttonsArray = [
 		{
 			name: "Login",
-			borderColor: styles.whiteBorder,
 			press: login,
-			type: "border",
-			textColor: styles.loginText,
+			type: "primary",
 		},
 		{
-			borderColor: styles.registration,
 			name: "Registration",
 			press: goToregistration,
-			type: "border",
-			textColor: styles.loginText,
+			type: "link2",
 		},
 		{
 			name: "Privacy Policy",
@@ -114,8 +112,4 @@ const styles = StyleSheet.create({
 
 });
 
-const mapDispatchToProps = dispatch => ({
-	setIsLoggedIn: loginStatus => dispatch(isLoggedIn(loginStatus)),
-});
-
-export default connect(null, mapDispatchToProps)(LoginScreen);
+export default LoginScreen;

@@ -5,15 +5,15 @@ import {
 	StyleSheet,
 	TouchableOpacity,
 } from "react-native";
-import { SETTINGS_OPTION_SCREEN } from "../../navigation/screens";
 import {useNavigation} from "@react-navigation/native";
 
+import { SETTINGS_OPTION_SCREEN } from "../../navigation/screens";
 
 const AppSettingsOptions = ({ item, logOut, timezon, press }) => {
 	const navigation = useNavigation();
 	const navigateToSettingsOption = useCallback(() => {
 		navigation.navigate(SETTINGS_OPTION_SCREEN, { screenName: item.screenName });
-	},[]);
+	},[]); 
 
 	return (
 		<View style={styles.options}>

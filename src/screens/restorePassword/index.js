@@ -6,9 +6,10 @@ import {
 } from "../../components/ui";
 import {useNavigation} from "@react-navigation/native";
 
-
 const AppRestorePassword = () => {
+
 	const navigation = useNavigation();
+
 	return (
 		<AppWrapper navigation={navigation}>
 			<Text>forgot password</Text>

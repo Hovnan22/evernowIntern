@@ -11,7 +11,6 @@ import {
 } from ".";
 import gradientBg from "../../../src/assets/images/welcomeBg.png";
 
-
 const { width } = Dimensions.get("screen");
 
 const AppFormButtonsBlock = ({

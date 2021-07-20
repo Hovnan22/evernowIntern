@@ -6,8 +6,7 @@ import {
 
 import AppMediaButtons from "./mediaButtons";
 
-
-const AppChangeAvatar = ({closeHandler}) => (
+const AppChangeAvatar = ({ closeHandler }) => (
 	<View style={styles.container}>
 		<View style={styles.button}>
 			<AppMediaButtons closeHandler={closeHandler} />

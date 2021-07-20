@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import {
 	View,
 	FlatList,
@@ -11,22 +11,18 @@ import {
 	AppSettingsInputField,
 	AppformSettingsButton,
 } from "../../components/settings";
-import {
-	AppWrapper,
-} from "../../components/ui";
+import { AppWrapper } from "../../components/ui";
 import { APPLANGUAGE } from "../../components/constants/settings";
 
 const AppSetingsOptionScreen = ({ route }) => {
 	const navigation = useNavigation();
 	const { screenName } = route.params;
-	const flatListRef = useRef();
 
 	return (
 		<AppWrapper navigation={navigation}>
 			{ (screenName === "changeLanguage")  && (
 				<FlatList
 					style={styles.languages}
-					ref={flatListRef}
 					data={APPLANGUAGE}
 					keyExtractor={(_, index) => index.toString()}
 					renderItem={({item}) => (

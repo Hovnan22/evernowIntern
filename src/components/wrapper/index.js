@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import {
 	View,
 	StatusBar,
@@ -8,12 +8,11 @@ import {useNavigation} from "@react-navigation/native";
 
 import { AppIconeButton } from ".";
 
-
 const AppWrapper = ({children,showBackBtn = true}) => {
 	const navigation = useNavigation();
-	const goBackHendler = () => {
+	const goBackHendler = useCallback( () => {
 		navigation && navigation.canGoBack() &&  navigation.goBack();
-	};
+	},[]);
 
 	return (
 		<View style={styles}>
@@ -34,9 +33,7 @@ const AppWrapper = ({children,showBackBtn = true}) => {
 			}
 		</View>
 	);
-
 };
-
 
 const styles = StyleSheet.create({
 	container: {

@@ -8,7 +8,6 @@ import {useNavigation} from "@react-navigation/native";
 
 import { AppIconeButton } from ".";
 
-
 const AppWrapper = ({children,showBackBtn = true}) => {
 	const navigation = useNavigation();
 	const goBackHendler = useCallback(() => {
@@ -36,7 +35,6 @@ const AppWrapper = ({children,showBackBtn = true}) => {
 	);
 
 };
-
 
 const styles = StyleSheet.create({
 	container: {
