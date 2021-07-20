@@ -23,7 +23,9 @@ const AppformSettingsButton = ({ changeEmail }) =>  {
 	return (
 		<ImageBackground   source={gradientBg} style={styles.inputBg} resizeMode="stretch" >
 			<View style={styles.buttons}>
-				{ emailInfo && <Text style={styles.emailInfo}>A confirmation email will be sent to a new mail</Text>}
+				{ emailInfo && (
+					<Text style={styles.emailInfo}>A confirmation email will be sent to a new mail</Text>
+				)}
 				<AppButton
 					name={"Save"}
 					press={saveHandler}

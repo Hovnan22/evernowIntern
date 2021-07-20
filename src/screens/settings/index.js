@@ -25,7 +25,7 @@ import {
 } from "../../components/settings";
 import { StorageService } from "../../services";
 import { isLoggedIn } from "../../actions/app";
-import { SETTINGSOPTION } from "../../components/constants/settings";
+import { SETTINGSOPTION } from "../../constants/settings";
 
 const AppSettings = () => {
 	const dispatch = useDispatch();
@@ -93,7 +93,9 @@ const AppSettings = () => {
 						/>
 					)}
 				/>
-				{isAvatarVisible && <AppChangeAvatar closeHandler={closeHandler} />}
+				{isAvatarVisible && (
+					<AppChangeAvatar closeHandler={closeHandler} />
+				)}
 			</View>
 		</AppWrapper>
 	);

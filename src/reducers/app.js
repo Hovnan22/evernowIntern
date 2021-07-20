@@ -4,7 +4,7 @@ const initalState = {
 	isLoggedIn: false,
 };
 
-export default (state = initalState, {type, payload}) => {
+export default (state = initalState, { type, payload }) => {
 	switch (type) {
 	case LOGIN: {
 		return {

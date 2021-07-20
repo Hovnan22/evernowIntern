@@ -5,7 +5,7 @@ class StorageService {
 		try {
 			await AsyncStorage.setItem("@evernow:auth", JSON.stringify(auth));
 		} catch (e) {
-			console.warn(e);
+			console.log(e);
 		}
 	}
 
@@ -14,7 +14,7 @@ class StorageService {
 			const auth = await AsyncStorage.getItem("@evernow:auth");
 			return JSON.parse(auth);
 		} catch (e) {
-			console.warn(e);
+			console.log(e);
 		}
 	}
 

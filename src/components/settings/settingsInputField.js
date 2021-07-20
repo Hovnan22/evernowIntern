@@ -17,7 +17,7 @@ import TimezonList from "./timezonList";
 import whiteBg from "../../../src/assets/images/whiteBg.png";
 
 
-const windowWidth = Dimensions.get("window").width;
+const { width } = Dimensions.get("window");
 
 const AppSettingsInputField = ({ screenName }) =>  {
 	const [email,seteEmail] = useState();
@@ -80,9 +80,12 @@ const AppSettingsInputField = ({ screenName }) =>  {
 
 	return (
 		<View style={styles.inputBlock}>
-			<ImageBackground   source={whiteBg} style={[styles.inputBg,
-				(screenName === "changeEmail" || screenName === "showEditName") && styles.nameBlock,
-			]} resizeMode="stretch" >
+			<ImageBackground   source={whiteBg} style={
+				[styles.inputBg,
+					(screenName === "changeEmail" || screenName === "showEditName") && styles.nameBlock,
+				]} 
+			resizeMode="stretch" 
+			>
 				<Text style={styles.info}>
 					{contant[screenName].title}
 				</Text>
@@ -121,7 +124,9 @@ const AppSettingsInputField = ({ screenName }) =>  {
 					</View>
 				)}
 			</ImageBackground>
-			{timezonList && (<TimezonList selectTimeZon={selectTimeZon}/>)}
+			{timezonList && (
+				<TimezonList selectTimeZon={selectTimeZon}/>
+			)}
 		</View>
 	);
 };
@@ -154,7 +159,7 @@ const styles = StyleSheet.create({
 		marginBottom: 25,
 	},
 	inputBlock: {
-		width: windowWidth -  60,
+		width: width -  60,
 		marginTop: 100,
 		marginHorizontal: 30,
 	},

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { useSelector } from "react-redux";
 
@@ -10,14 +10,13 @@ import AppServices from "./../services/services";
 const AppNavigationContainer = () => {
 	
 	const [isReady, setIsReady] = useState(false);
-	const isLoggedIn = useSelector(({app}) => app.isLoggedIn)
+	const isLoggedIn = useSelector(({ app: { isLoggedIn } }) => isLoggedIn);
 
 	useEffect( () => {
-		async function isRedyAppServices () {
+		(async function () {
 			await AppServices.checkStatus();
 			setIsReady(true);
-		}
-		isRedyAppServices();
+		})();
 	}, []);
 
 	return (

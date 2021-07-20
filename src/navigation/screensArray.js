@@ -56,9 +56,6 @@ export const logedinRootNavigation = [
 	{
 		name: SETTINGS_OPTION_SCREEN,
 		component: AppSetingsOptionScreen,
-		options: {
-			tabBarVisible: false
-		},
 	},
 ]
 

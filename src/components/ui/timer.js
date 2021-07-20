@@ -1,7 +1,7 @@
 import React, { 
-	 useCallback, 
-	 useEffect,  
-	 useState 
+	useCallback, 
+	useEffect,  
+	useState 
 } from "react";
 import { 
 	View, 
@@ -94,19 +94,19 @@ const styles = StyleSheet.create({
 	container: {
 		backgroundColor: "rgba(255,255,255,0.3)",
 		width: 70,
-		borderRadius: 40
+		borderRadius: 40,
 	},
 	infoText: {textAlign: "center"},
 	container2: {
 		width: 205,
-		height: 205
+		height: 205,
 	},
 	textColor: {
 		color: "#fff",
 	},
 	textColor2: {
 		color: "#000",
-		fontSize: 35
+		fontSize: 35,
 	}
 });
 

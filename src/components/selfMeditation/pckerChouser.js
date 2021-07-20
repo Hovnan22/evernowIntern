@@ -29,7 +29,6 @@ const PickerChouser = ({
 	},[]);
 
 	const setNewTimer = useCallback(() => {
-		console.log(hours,minute,"hours,minute")
 		setTimer(hours,minute);
 		setTimePicherVisible(false);
 	},[ hours, minute])

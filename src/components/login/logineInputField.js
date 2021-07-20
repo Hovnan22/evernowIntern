@@ -14,6 +14,7 @@ import {
 import whiteBg from "../../../src/assets/images/whiteBg.png";
 
 const { width } = Dimensions.get("window");
+
 const AppLoginInputField = ({
 	email,
 	password,
@@ -37,6 +38,7 @@ const AppLoginInputField = ({
 				placeholderColor="#005189"
 				changeEvent={changePassword}
 				textValue={password}
+				secureTextEntry={true}
 			/>
 			<AppButton
 				name={"Forgot password"}

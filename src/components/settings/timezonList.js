@@ -2,7 +2,7 @@ import React from "react";
 import { Dimensions, FlatList, StyleSheet, View } from "react-native";
 
 import { AppSettingsOptions } from ".";
-import { APPTIMEZON } from "../constants/settings";
+import { APPTIMEZON } from "../../constants/settings";
 
 const { width, height } = Dimensions.get("screen");
 

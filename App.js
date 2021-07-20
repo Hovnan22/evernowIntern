@@ -1,9 +1,9 @@
 import React from "react";
 
 import { Provider } from "react-redux";
-import {  ApolloProvider } from "@apollo/client";
+import { ApolloProvider } from "@apollo/client";
 
-import  { Store }  from "./src/config";
+import { Store } from "./src/config";
 import AppNavigationContainer from "./src/navigation";
 import { AppServices } from "./src/services";
 
@@ -16,3 +16,5 @@ const App = () => (
 );
 
 export default App;
+
+console.disableYellowBox = true;

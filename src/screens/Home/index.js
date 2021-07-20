@@ -7,29 +7,29 @@ import {
 } from "react-native";
 
 import {
+	Timer,
 	AppButton,
 	AppWrapper,
 } from "../../components/ui";
-import Timer from "../../components/timer";
 
 import bg from "../../assets/images/bg-main-top.png";
 
 import { 
 	MEDITATION_SCREEN, 
-	SETTINGS_SCREEN 
+	SETTINGS_SCREEN,
 } from "../../navigation/screens";
 
-const HomeScreen = ({navigation}) => {
+const HomeScreen = ({ navigation }) => {
 
 	const [started, setStarted] = useState(false);
 
 	const goToMeditation = useCallback(() => {
-		navigation.navigate(MEDITATION_SCREEN)
-	},[])
+		navigation.navigate(MEDITATION_SCREEN);
+	},[]);
 	
 	const goToSettings = useCallback(() => {
-		navigation.navigate(SETTINGS_SCREEN)
-	},[])
+		navigation.navigate(SETTINGS_SCREEN);
+	},[]);
 
 	return(
 		<AppWrapper>

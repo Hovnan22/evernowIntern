@@ -4,7 +4,7 @@ import {
 	FlatList,
 	StyleSheet,
 } from "react-native";
-import {useNavigation} from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 
 import {
 	AppSettingsOptions,
@@ -12,7 +12,7 @@ import {
 	AppformSettingsButton,
 } from "../../components/settings";
 import { AppWrapper } from "../../components/ui";
-import { APPLANGUAGE } from "../../components/constants/settings";
+import { APPLANGUAGE } from "../../constants/settings";
 
 const AppSetingsOptionScreen = ({ route }) => {
 	const navigation = useNavigation();

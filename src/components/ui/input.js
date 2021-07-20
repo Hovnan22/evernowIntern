@@ -4,7 +4,7 @@ import {
 	TextInput,
 } from "react-native";
 
-const AppInput = ({ styles,changeEvent,textValue = "", placeholder, placeholderColor = "#EDF2FF" }) => (
+const AppInput = ({ styles,changeEvent,textValue = "", placeholder, placeholderColor = "#EDF2FF", secureTextEntry = false}) => (
 	<View>
 		<TextInput
 			style={[styles]}
@@ -12,6 +12,7 @@ const AppInput = ({ styles,changeEvent,textValue = "", placeholder, placeholderC
 			value={textValue}
 			placeholderTextColor={placeholderColor}
 			placeholder={placeholder}
+			secureTextEntry={secureTextEntry}
 		/>
 	</View>
 );

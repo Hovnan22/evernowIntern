@@ -32,4 +32,5 @@ const styles = StyleSheet.create({
 		marginHorizontal: 25,
 	},
 });
+
 export default AppSettingsOptions;

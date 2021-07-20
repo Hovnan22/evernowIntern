@@ -11,7 +11,7 @@ export default class AppServices  {
 
 	static async checkStatus () {
 		const auth = await StorageService.getAuth();
-		Store.dispatch(isLoggedIn(auth? auth: false));
+		Store.dispatch(isLoggedIn(auth));
 	}
 
 	static apolloClient = new ApolloClient({

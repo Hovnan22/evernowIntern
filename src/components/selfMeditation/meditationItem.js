@@ -6,9 +6,7 @@ import {
 	TouchableOpacity,
 } from "react-native";
 
-import {
-	AppIcon
-} from "../ui";
+import { AppIcon } from "../ui";
 
 const MeditationItem = ({
 	item,

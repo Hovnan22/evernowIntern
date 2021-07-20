@@ -10,7 +10,8 @@ const AppRoot = () => (
 		screenOptions={() => ({
 			headerShown: false,
 			tabBarVisible: false,
-		})}>
+		})}
+	>
 		{logedinRootNavigation.map(screen => (
 			<Stack.Screen {...screen}
 				key={screen.name}

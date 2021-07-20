@@ -109,7 +109,6 @@ const styles = StyleSheet.create({
 		height: "100%",
 		backgroundColor: "#f2f2f2",
 	},
-
 });
 
 export default LoginScreen;

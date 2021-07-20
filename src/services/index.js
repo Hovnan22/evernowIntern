@@ -1,2 +1,2 @@
 export { default as AppServices} from  "./services";
-export { default as StorageService } from './storage';
+export { default as StorageService } from "./storage";

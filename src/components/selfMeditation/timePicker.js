@@ -24,17 +24,17 @@ const TimePicker =  ({
 }) => {
 
 	const closeTimePicker = useCallback (() => {
-		setTimePicherVisible(false)
+		setTimePicherVisible(false);
 	},[]);
 
 	const showPicerCouser = useCallback(() => {
-		setShowTimeChouserVisible(true)
-	},[])
+		setShowTimeChouserVisible(true);
+	},[]);
 
 	return (
 		<LinearGradient 
 			start={{x: 0, y: 1}} end={{x: 1, y: 1}}
-			colors={["rgba(0, 129, 218, 0.5)" , "rgba(0, 129, 218, 0)", ]} 
+			colors={["rgba(0, 129, 218, 0.5)" , "rgba(0, 129, 218, 0)"]} 
 			style={styles.linearGradient}>
 			<View style={styles.container}>
 				<View style={styles.tmeButtons}>

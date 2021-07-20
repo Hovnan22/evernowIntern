@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { 
 	View,
 	StyleSheet,
@@ -7,11 +7,11 @@ import {
 	Dimensions,
 } from "react-native";
 
-import Timer from "../timer";
 import  PickerChouser from "./pckerChouser";
 import IconButton from "./IconButton";
 import TimePicker from "./timePicker";
 import MeditationLists from "./meditationList";
+import { Timer } from "../ui";
 
 const { width } = Dimensions.get("screen");
 
@@ -37,7 +37,7 @@ const LeftMenu = ({ setTimePicherVisible, timePicherVisible }) => {
 
 	const start = useCallback(() => {
 		setStarted(!started);
-	},[started])
+	},[started]);
 
 	return(
 		<View style={styles.container}>

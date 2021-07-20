@@ -17,7 +17,7 @@ import LinearGradient from "react-native-linear-gradient";
 import { AppIcon } from "../ui";
 
 import MeditationItem from "./meditationItem";
-import { meditation } from "../constants/meditation";
+import { meditation } from "../../constants/meditation";
 
 const{ height, width } = Dimensions.get("screen");
 
@@ -33,7 +33,7 @@ const MeditationLists = () => {
 	const [showAllList, setShowAlllist] = useState(false);
 	const animatedHeigh = new Animated.Value(0);
 
-	const flatListRef = useRef()
+	const flatListRef = useRef();
 	const getLayouts = (event) => {
 		if (meditationHeight >= event.nativeEvent.layout.height && flatlistHeight === meditationHeight * prevListCount) {
 			return false;
@@ -108,7 +108,6 @@ const MeditationLists = () => {
 			extrapolate: "clamp",
 			useNativeDriver: false,
 		}))
-
 	};
 
 	return (

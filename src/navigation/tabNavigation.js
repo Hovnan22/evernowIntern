@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { tabRootScreens } from "./screensArray";
 
 const Tab = createBottomTabNavigator();
-const TabNavigation = ({ navigationRef }) => (
+const TabNavigation = () => (
 	
 	<Tab.Navigator
 		screenOptions={() => ({
@@ -12,7 +12,7 @@ const TabNavigation = ({ navigationRef }) => (
 		})}
 		tabBarOptions={{ showLabel: false }}
 	>
-		{tabRootScreens.map((tab, index) => (
+		{tabRootScreens.map((tab) => (
 			<Tab.Screen
 				key={tab.name} {...tab}
 			/>
