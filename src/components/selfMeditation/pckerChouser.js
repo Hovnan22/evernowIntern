@@ -40,9 +40,7 @@ const PickerChouser = ({
 					<Picker
 						selectedValue={minute}
 						style={styles.picker}
-						onValueChange={(itemValue, itemIndex) => {
-							console.log(itemValue,"itemValue"); 
-							return setHours(itemValue)}}
+						onValueChange={(itemValue) => setHours(itemValue)}
 					>
 						{hourArr.map(item => (
 							<Picker.Item key={item.value} label={`${item} hours`} value={item} />
@@ -51,10 +49,7 @@ const PickerChouser = ({
 					<Picker
 						selectedValue={hours}
 						style={styles.picker}
-						onValueChange={(itemValue, itemIndex) => {
-							console.log(itemValue,"itemValue");
-							return  setMinute(itemValue)
-						}}
+						onValueChange={(itemValue) => setMinute(itemValue)}
 					>
 						{minuteArr.map(item => (
 							<Picker.Item key={item.value} label={`${item} minutes`} value={item} />

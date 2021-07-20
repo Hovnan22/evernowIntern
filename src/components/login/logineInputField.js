@@ -33,7 +33,7 @@ const AppLoginInputField = ({
 				textValue={email}
 			/>
 			<AppInput
-				styles={ [styles.email , styles.marginVertical] }
+				styles={[styles.email, styles.marginVertical]}
 				placeholder="Password"
 				placeholderColor="#005189"
 				changeEvent={changePassword}

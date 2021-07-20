@@ -15,8 +15,8 @@ import {
 import bg from "../../assets/images/bg-main-top.png";
 
 import { 
-	MEDITATION_SCREEN, 
 	SETTINGS_SCREEN,
+	MEDITATION_SCREEN, 
 } from "../../navigation/screens";
 
 const HomeScreen = ({ navigation }) => {

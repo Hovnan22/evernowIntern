@@ -5,7 +5,9 @@ import { AppWrapper } from "../../components/ui";
 import { useNavigation } from "@react-navigation/native";
 
 const RegistrationScreen = () => {
+
 	const navigation = useNavigation();
+	
 	return (
 		<AppWrapper navigation={navigation}>
 			<Text>registration</Text>

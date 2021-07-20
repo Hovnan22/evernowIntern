@@ -21,5 +21,4 @@ export default class AppServices  {
 			uri:  "https://harmony-weath.fun/api",
 		}),
 	});
-
 }

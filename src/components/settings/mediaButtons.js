@@ -9,7 +9,7 @@ import {
 
 const { width } =  Dimensions.get("window");
 
-const AppMediaButtons = ({closeHandler}) => (
+const AppMediaButtons = ({ closeHandler }) => (
 	<View style={styles.container}>
 		<View >
 			<TouchableOpacity style={[styles.button, styles.topRadius]}>

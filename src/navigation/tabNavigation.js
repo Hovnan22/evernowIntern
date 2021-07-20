@@ -5,7 +5,6 @@ import { tabRootScreens } from "./screensArray";
 
 const Tab = createBottomTabNavigator();
 const TabNavigation = () => (
-	
 	<Tab.Navigator
 		screenOptions={() => ({
 			headerShown: false,

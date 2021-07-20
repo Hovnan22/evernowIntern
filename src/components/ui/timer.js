@@ -72,7 +72,8 @@ const Timer = ({
 				fill={fill}
 				tintColor= {type === "meditation" ? "#FFFFFF" : "#0081DA"}
 				rotation={0}
-				backgroundColor={type === "meditation"? "rgba(255,255,255,0.3)": "rgba(255,255,255,0)"} >
+				backgroundColor={type === "meditation"? "rgba(255,255,255,0.3)": "rgba(255,255,255,0)"}
+			>
 				{
 					() => (
 						<View>

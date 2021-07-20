@@ -3,7 +3,7 @@ import {
 	View,
 	StyleSheet,
 } from "react-native";
-import {useNavigation} from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { useDispatch } from "react-redux";
 
 import { StorageService } from "../../services";

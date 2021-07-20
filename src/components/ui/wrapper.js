@@ -8,7 +8,7 @@ import {useNavigation} from "@react-navigation/native";
 
 import { AppIconeButton } from ".";
 
-const AppWrapper = ({children,showBackBtn = true}) => {
+const AppWrapper = ({ children, showBackBtn = true }) => {
 	const navigation = useNavigation();
 	const goBackHendler = useCallback(() => {
 		navigation && navigation.canGoBack() &&  navigation.goBack();
@@ -17,17 +17,19 @@ const AppWrapper = ({children,showBackBtn = true}) => {
 	return (
 		<View style={styles}>
 			<StatusBar
+				barStyle="dark-content"
 				translucent
 				animated={true}
 				backgroundColor="rgba(0, 0, 0, 0)"
 			/>
-			{ showBackBtn && navigation.canGoBack() && (	<AppIconeButton
-				height={25}
-				press={goBackHendler}
-				width={15}
-				iconName="back"
-				styles={styles.backe}
-			/>)}
+			{ showBackBtn && navigation.canGoBack() && (
+				<AppIconeButton
+					height={25}
+					press={goBackHendler}
+					width={15}
+					iconName="back"
+					styles={styles.backe}
+				/>)}
 			{
 				children
 			}

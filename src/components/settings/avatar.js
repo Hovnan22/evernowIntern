@@ -8,7 +8,7 @@ import {
 import avatar from "../../assets/images/avatar.png";
 
 const AppAvatar = ({style}) => (
-	<View style={ [styles.avatarBlock, style] }>
+	<View style={[styles.avatarBlock, style]}>
 		<Image
 			style={styles.avatar}
 			source={avatar}

@@ -17,7 +17,6 @@ class StorageService {
 			console.log(e);
 		}
 	}
-
 }
 
 export default StorageService;

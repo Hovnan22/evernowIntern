@@ -11,10 +11,9 @@ const AppImage = ({ url, width, height, style }) => (
 		source={url}
 	/>
 );
+
 const styles = StyleSheet.create({
-	image: {
-		resizeMode: "stretch",
-	},
+	image: {resizeMode: "stretch"},
 });
 
 export default AppImage;

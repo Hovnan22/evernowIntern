@@ -33,15 +33,17 @@ const AppSetingsOptionScreen = ({ route }) => {
 					)}
 				/>
 			)}
-			{!(screenName === "changeLanguage") && (<View style={styles.container}>
-				<AppSettingsInputField
-					screenName={screenName}
-				/>
-				<AppformSettingsButton
-					timeZon={8}
-					changeEmail={8}
-				/>
-			</View>)}
+			{!(screenName === "changeLanguage") && (
+				<View style={styles.container}>
+					<AppSettingsInputField
+						screenName={screenName}
+					/>
+					<AppformSettingsButton
+						timeZon={8}
+						changeEmail={8}
+					/>
+				</View>
+			)}
 		</AppWrapper>
 	);
 };

@@ -78,7 +78,8 @@ const AppSettings = () => {
 						<AppUserInfo
 							setChangeAvatar={avatarHandler}
 							navigation={navigation}
-						/>)}
+						/>
+					)}
 					ItemSeparatorComponent={() => (<View style={styles.seperator} />)}
 					renderItem={({ item }) => (
 						<AppSettingsOptions

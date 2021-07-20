@@ -11,8 +11,8 @@ import {
 } from "react-native"
 
 import {
+	AppIcon,
 	AppButton,
-	AppIcon
 } from "../ui";
 
 const { width, height } = Dimensions.get("screen");

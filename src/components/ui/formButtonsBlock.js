@@ -6,17 +6,13 @@ import {
 	ImageBackground,
 } from "react-native";
 
-import {
-	AppButton,
-} from ".";
+import { AppButton } from ".";
 import gradientBg from "../../../src/assets/images/welcomeBg.png";
 
 const { width } = Dimensions.get("screen");
 
-const AppFormButtonsBlock = ({
-	buttonsArray,
-}) =>  (
-	<ImageBackground   source={gradientBg} style={styles.inputBg} resizeMode="stretch" >
+const AppFormButtonsBlock = ({ buttonsArray }) =>  (
+	<ImageBackground source={gradientBg} style={styles.inputBg} resizeMode="stretch" >
 		<View style={styles.buttons}>
 			{buttonsArray.map( items => (
 				<View 	key={items.name} style={styles.buttonsItem}>

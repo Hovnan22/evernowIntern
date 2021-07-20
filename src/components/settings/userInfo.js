@@ -5,7 +5,7 @@ import {
 	StyleSheet,
 	TouchableOpacity,
 } from "react-native";
-import {useNavigation} from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 
 import { AppAvatar } from ".";
 import { AppIcon } from "../ui";
@@ -19,7 +19,7 @@ const AppUserInfo = ({ setChangeAvatar }) => {
 	}, []);
 	const EditName = useCallback(
 		() => {
-			navigation.navigate(SETTINGS_OPTION_SCREEN, {screenName: "showEditName"});
+			navigation.navigate(SETTINGS_OPTION_SCREEN, { screenName: "showEditName" });
 		}, []
 	);
 	

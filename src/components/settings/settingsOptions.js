@@ -5,7 +5,7 @@ import {
 	StyleSheet,
 	TouchableOpacity,
 } from "react-native";
-import {useNavigation} from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 
 import { SETTINGS_OPTION_SCREEN } from "../../navigation/screens";
 

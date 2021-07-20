@@ -18,7 +18,7 @@ const components = {
 	"yog": React.lazy(() => import("../../assets/icons/yog.svg")),
 };
 
-const RenderIcon = ({icon, style, ...props}) => {
+const RenderIcon = ({ icon, style, ...props }) => {
 	const TagName = components[icon];
 	if (TagName) {
 		return (

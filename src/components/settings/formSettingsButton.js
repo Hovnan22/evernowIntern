@@ -59,7 +59,6 @@ const styles = StyleSheet.create({
 		bottom: 30,
 		marginHorizontal: 40,
 	},
-
 	inputBg: {
 		position: "absolute",
 		bottom: 0,
