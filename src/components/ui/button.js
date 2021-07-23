@@ -10,17 +10,15 @@ import {
 const Button = ({ name, press,  type = "border" }) => {
 
 	const container = (
-		<TouchableOpacity style={[ styles.buttons, 
-			type === "primary" ?  styles.border : 
-				(type === "success" ?  styles.successBtn : "") 
-		]} onPress={press}>
+		<TouchableOpacity 
+			style={[ styles.buttons, 
+				type === "primary" ?  styles.border : 
+					(type === "success" ?  styles.successBtn : "") 
+			]} 
+			onPress={press}
+		>
 			<Text style={
-				[type === "gradient" ? styles.gradientText :
-					(type === "primary" ? styles.borderText :
-						(type === "link" ?  styles.linkText : 
-							(type === "link2" ?  styles.linkText2 : 
-								(type === "success" ?  styles.success : ""))
-						))]
+				styles[type+"Text"]						
 			}
 			>
 				{name}
@@ -31,7 +29,12 @@ const Button = ({ name, press,  type = "border" }) => {
 		<View>
 			{
 				type === "gradient" ? (
-					<LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={["#9AD1FF", "#0075C8"]} style={styles.gradient}>
+					<LinearGradient
+						start={{ x: 0, y: 0 }}
+						end={{ x: 1, y: 0 }}
+						colors={["#9AD1FF", "#0075C8"]}
+						style={styles.gradient}
+					>
 						{container}
 					</LinearGradient>
 				) : ( container )
@@ -45,10 +48,10 @@ const styles = StyleSheet.create({
 		color: "#9A9CA8",
 		opacity: 0.4,
 	},
-	success: {
+	successText: {
 		color: "#fff",
 	},
-	linkText2: {
+	whiteLinkText: {
 		color: "#fff",
 		textAlign: "center",
 		alignItems: "center",
@@ -81,7 +84,7 @@ const styles = StyleSheet.create({
 	gradientText: {
 		color: "#fff",
 	},
-	borderText: {
+	primaryText: {
 		color: "#18a0fb",
 	},
 });

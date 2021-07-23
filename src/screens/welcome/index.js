@@ -20,32 +20,29 @@ import {
 	REGISTRATION_SCREEN,
 } from "../../navigation/screens";
 
+const socialButtons = [
+	{
+		iconName: "google",
+	},
+	{
+		iconName: "fb",
+	},
+	{
+		iconName: "vk",
+	},
+];
 
-const WelcomeScreen = () => {
-	const navigation = useNavigation();
-	const socialButtons = [
-		{
-			width: 32,
-			height: 32,
-			iconName: "google",
-		},
-		{
-			width: 32,
-			height: 32,
-			iconName: "fb",
-		},
-		{
-			width: 32,
-			height: 32,
-			iconName: "vk",
-		},
-	];
+const WelcomeScreen = ({ navigation }) => {
+	const goToLogin = useCallback(() => {
+		navigation.navigate( LOGIN_SCREEN )
+	},[]);
 
-	const goToLogin = useCallback(() => navigation.navigate( LOGIN_SCREEN ),[]);
-	const goToRegistration = useCallback(() => navigation.navigate(REGISTRATION_SCREEN),[]);
+	const goToRegistration = useCallback(() => {
+		navigation.navigate(REGISTRATION_SCREEN)
+	},[]);
 
 	return (
-		<AppWrapper showBackBtn={false}>
+		<AppWrapper>
 			<View style={styles.container}>
 				<View style={styles.gradienBg}>
 					<AppImage width={"100%"} height={430} url={gradientBg} />

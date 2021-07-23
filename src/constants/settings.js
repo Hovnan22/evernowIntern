@@ -27,7 +27,7 @@ export const APPLANGUAGE = [
 	{ name: "Spanish" },
 	{ name: "Arab" },
 	{ name: "Portuguese" },
-	{ name: "German"},
+	{ name: "German" },
 	{ name: "English" },
 	{	name: "Chinese" },
 ];

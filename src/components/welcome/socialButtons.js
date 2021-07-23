@@ -6,7 +6,11 @@ import {
 
 import { AppIconeButton } from "../ui";
 
-const AppSocialButtons = ({ socialLoginStyles, socialIconsStyles, socialButtons }) => (
+const AppSocialButtons = ({
+	socialIconsStyles,
+	socialLoginStyles,
+	socialButtons,
+}) => (
 	<View style={socialLoginStyles}>
 		<Text>Login via social network</Text>
 		<View style={socialIconsStyles}>
@@ -14,8 +18,8 @@ const AppSocialButtons = ({ socialLoginStyles, socialIconsStyles, socialButtons 
 				socialButtons.map(item => (
 					<AppIconeButton
 						key={item.iconName}
-						width={item.width}
-						height={item.height}
+						width={32}
+						height={32}
 						iconName={item.iconName}
 					/>
 				))

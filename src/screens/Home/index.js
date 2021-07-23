@@ -1,26 +1,25 @@
-import React, { useCallback, useState } from "react";
+import React, {
+	useCallback,
+	useState 
+} from "react";
 import {
 	Text,
 	View,
 	StyleSheet,
-	ImageBackground,
 } from "react-native";
 
 import {
-	Timer,
+	AppTimer,
 	AppButton,
 	AppWrapper,
 } from "../../components/ui";
 
-import bg from "../../assets/images/bg-main-top.png";
-
 import { 
 	SETTINGS_SCREEN,
-	MEDITATION_SCREEN, 
+	MEDITATION_SCREEN,
 } from "../../navigation/screens";
 
-const HomeScreen = ({ navigation }) => {
-
+const HomeScreen = ({navigation}) => {
 	const [started, setStarted] = useState(false);
 
 	const goToMeditation = useCallback(() => {
@@ -32,16 +31,13 @@ const HomeScreen = ({ navigation }) => {
 	},[]);
 
 	return(
-		<AppWrapper>
-			<ImageBackground 
-				source={bg} 
-				resizeMode="cover"
-				style={styles.image}
-			/>
+		<AppWrapper
+			type="topBg"
+		>
 			<View style={styles.whiteBg}>
 				<Text style={styles.topTitle}>Meditation will start at 20:00</Text>
 				<View style={styles.timer}>
-					<Timer 
+					<AppTimer 
 						width={3}
 						size={205}
 						duration={5000}

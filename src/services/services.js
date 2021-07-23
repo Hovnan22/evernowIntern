@@ -2,13 +2,12 @@ import {
 	ApolloClient,
 	InMemoryCache,
 } from "@apollo/client";
-import { createUploadLink } from "apollo-upload-client";
+import { StorageService } from ".";
 import { Store } from "../config";
 import { isLoggedIn } from "../actions/app";
-import { StorageService } from ".";
+import { createUploadLink } from "apollo-upload-client";
 
-export default class AppServices  {
-
+export default class AppServices {
 	static async checkStatus () {
 		const auth = await StorageService.getAuth();
 		Store.dispatch(isLoggedIn(auth));

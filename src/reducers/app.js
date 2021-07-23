@@ -1,7 +1,8 @@
-import { LOGIN } from "../actions/types";
+import { LOGIN, SET_STATUSBAR_STYLE } from "../actions/types";
 
 const initalState = {
 	isLoggedIn: false,
+	statusBarStyle: false,
 };
 
 export default (state = initalState, { type, payload }) => {
@@ -10,6 +11,12 @@ export default (state = initalState, { type, payload }) => {
 		return {
 			...state,
 			isLoggedIn: payload,
+		};
+	}
+	case SET_STATUSBAR_STYLE: {
+		return {
+			...state,
+			statusBarStyle: payload,
 		};
 	}
 	default: {

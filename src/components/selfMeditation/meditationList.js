@@ -23,12 +23,12 @@ const{ height, width } = Dimensions.get("screen");
 
 const MeditationLists = () => {
 
-	const largScreen = 5;
-	const midleScreen = 3;
-	const smoleScreen = 1;
+	const largList = 5;
+	const mediumList = 3;
+	const smoleList = 1;
 	const [meditationHeight, setmeditationheight] = useState(0);
 	const [flatlistHeight, setFlatlistheight] = useState(new Animated.Value(0));
-	const [prevListCount, setPrevListCount] = useState(midleScreen);
+	const [prevListCount, setPrevListCount] = useState(mediumList);
 	const [activeMeditationIndex, setActiveMeditationIndex] = useState();
 	const [showAllList, setShowAlllist] = useState(false);
 	const animatedHeigh = new Animated.Value(0);
@@ -45,12 +45,12 @@ const MeditationLists = () => {
 	const pressToMeditation = useCallback((index) => {
 		let prevLSize ;
 
-		if(prevListCount !== smoleScreen) {
+		if(prevListCount !== smoleList) {
 			setShowAlllist(false);
-			prevLSize = smoleScreen;
+			prevLSize = smoleList;
 		}else {
 			setShowAlllist(true);
-			prevLSize = largScreen;
+			prevLSize = largList;
 		}
 		setPrevListCount(prevLSize);
 		const newHeight = prevLSize * meditationHeight;
@@ -66,12 +66,12 @@ const MeditationLists = () => {
 	const listPresshandler = () => {
 		let screenSize ;
 		if(typeof activeMeditationIndex === "number") {
-			screenSize = smoleScreen;
+			screenSize = smoleList;
 		} else {
-			screenSize = midleScreen;
+			screenSize = mediumList;
 		}
 
-		const newHeight = showAllList ?  meditationHeight * screenSize : meditationHeight * largScreen;
+		const newHeight = showAllList ?  meditationHeight * screenSize : meditationHeight * largList;
 		if(showAllList) {
 			Animated.timing(
 				animatedHeigh,
@@ -96,7 +96,7 @@ const MeditationLists = () => {
 					useNativeDriver: false,
 				}
 			).start(() => {
-				setPrevListCount(largScreen);
+				setPrevListCount(largList);
 				setFlatlistheight(newHeight);
 				setShowAlllist(!showAllList);
 			});
@@ -111,9 +111,9 @@ const MeditationLists = () => {
 	};
 
 	return (
-		<View style={[styles.meditationLists, prevListCount === largScreen ? styles.largScreen: null]} >
+		<View style={[styles.meditationLists, prevListCount === largList ? styles.largList: null]} >
 			{
-				(prevListCount === largScreen) && (
+				(prevListCount === largList) && (
 					<LinearGradient 
 						start={{x: 0, y: 1}} end={{x: 1, y: 1}}
 						colors={["rgba(0, 129, 218, 0.5)" , "rgba(0, 129, 218, 0)", ]} 
@@ -129,11 +129,14 @@ const MeditationLists = () => {
 					showsVerticalScrollIndicator={false}
 					showsHorizontalScrollIndicator={false}
 					scrollEnabled={false}
-					renderItem={(item) => (<MeditationItem 
-						item={item} 
-						getLayouts={getLayouts} 
-						pressToMeditation={pressToMeditation}
-					/>)}
+					renderItem={({item , index}) => (
+						<MeditationItem 
+							item={item} 
+							index={index}
+							getLayouts={getLayouts} 
+							pressToMeditation={pressToMeditation}
+						/>
+					)}
 				/>
 			</Animated.View>
 			<TouchableOpacity 
@@ -164,7 +167,7 @@ const styles = StyleSheet.create({
 	rotate: {
 		transform: [{ rotate: "180deg" }],
 	},
-	largScreen: {
+	largList: {
 		zIndex: 2
 	},
 	flatListItems: {

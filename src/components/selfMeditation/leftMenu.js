@@ -7,33 +7,49 @@ import {
 	Dimensions,
 } from "react-native";
 
-import  PickerChouser from "./pckerChouser";
+import  PickerChouser from "../ui/pickerChouser";
 import IconButton from "./IconButton";
 import TimePicker from "./timePicker";
 import MeditationLists from "./meditationList";
-import { Timer } from "../ui";
+import { AppTimer } from "../ui";
 
 const { width } = Dimensions.get("screen");
 
-const LeftMenu = ({ setTimePicherVisible, timePicherVisible }) => {
+const LeftMenu = ({
+	setTimePicherVisible,
+	timePicherVisible
+}) => {
 	
-	const [timer,setTimer] = useState(10);
-	const [timeChouserVisible,setShowTimeChouserVisible] = useState(false);
-	const [started,setStarted] = useState(false);
+	const [timer, setTimer] = useState(1800);
+	const [timeChouserVisible, setShowTimeChouserVisible] = useState(false);
+	const [started, setStarted] = useState(false);
+	const [hours, setHours] = useState(0);
+	const [minute, setMinute] = useState(30);
 
-	const setNewTime = (hours, minuts) => {
-		if(hours > 0) {
-			const newTime = hours * 60 * 60 + minuts * 60;
+	const closePicker = useCallback(() => {
+		setShowTimeChouserVisible(false);
+	},[]);
+
+	const setNewTimer = useCallback((e) => {
+		setHours(e.getHours());
+		setMinute(e.getMinutes());
+		setNewTime(e.getHours(),e.getMinutes());
+		setShowTimeChouserVisible(false);
+	},[hours, minute]);
+
+	const setNewTime = (newHours, newMinuts) => {
+		if(newHours > 0) {
+			const newTime = newHours * 60 * 60 + newMinuts * 60;
 			setTimer(newTime);
 		} else {
-			const newTime = minuts * 60;
+			const newTime = newMinuts * 60;
 			setTimer(newTime);
 		}
 	}
 
 	const timepicherHandler = useCallback(() => {
 		setTimePicherVisible(!timePicherVisible);
-	}, [ timePicherVisible ]);
+	}, [timePicherVisible]);
 
 	const start = useCallback(() => {
 		setStarted(!started);
@@ -41,7 +57,7 @@ const LeftMenu = ({ setTimePicherVisible, timePicherVisible }) => {
 
 	return(
 		<View style={styles.container}>
-			<Timer 
+			<AppTimer 
 				width={1}
 				size={70}
 				duration={timer}
@@ -57,25 +73,20 @@ const LeftMenu = ({ setTimePicherVisible, timePicherVisible }) => {
 					height={15}
 				/>
 			</View>
-			{
-				timePicherVisible && !timeChouserVisible && (
-					<TimePicker 
-						onChange={setNewTime}
-						setTimePicherVisible={setTimePicherVisible}
-						setShowTimeChouserVisible={setShowTimeChouserVisible}
-					/>
-				)
-			}
-			{timeChouserVisible && (
+			{timeChouserVisible ? (
 				<PickerChouser
-					setTimer={setNewTime}
-					setTimePicherVisible={setShowTimeChouserVisible}
+					setNewTimer={setNewTimer}
+					closePicker={closePicker}
+				/>
+			) : timePicherVisible &&  (
+				<TimePicker
+					onChange={setNewTime}
+					setTimePicherVisible={setTimePicherVisible}
+					setShowTimeChouserVisible={setShowTimeChouserVisible}
 				/>
 			)
 			}
-			{!timePicherVisible && (
-				<MeditationLists />)
-			}
+			{!timePicherVisible && ( <MeditationLists />)}
 			<TouchableOpacity 
 				style={styles.start}
 				onPress={start}
@@ -105,7 +116,7 @@ const styles= StyleSheet.create({
 		alignItems: "center",
 		justifyContent: "center",
 		position: "absolute",
-		bottom: 35,
+		bottom: 0,
 		zIndex: 1,
 		left: (width - 70) / 2,
 	},

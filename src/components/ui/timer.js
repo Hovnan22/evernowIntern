@@ -19,28 +19,24 @@ const Timer = ({
 	duration,
 	setStarted,
 }) => {
-
+	const [showSec, setShowSec] = useState(true);
 	const [timer,setTimer] = useState(duration);
-	const [hours, setHours] = useState(type === "home" ? Math.floor(duration / 60 / 60) : null);
-	const [newMin,setNewMin] = useState(type === "home" ? 
-		Math.floor((duration / 60)  - (hours * 60)) : 
-		Math.floor(duration / 60));
-	const [sec,setSec] = useState(type === "home" ? timer -  newMin * 60 + hours * 60 * 60 : timer - newMin * 60);
-	const [min, setMin] = useState(type === "home" ? 
-		Math.floor((duration / 60)  - (hours * 60)) : 
-		Math.floor(duration / 60));
+	const [hours, setHours] = useState(Math.floor(duration / 60 / 60));
+	const [min, setMin] = useState(Math.floor((duration / 60) - (hours * 60)));
+	const [sec,setSec] = useState(duration - (min * 60 + hours * 60 * 60));
 	const [fill,setFill] = useState(100);
 
 	useEffect(() => {
+		const newHour = Math.floor(duration / 60 / 60);
+		const newMin = Math.floor((duration / 60) - (newHour * 60));
 		setTimer(duration);
-		setHours(type === "home" ? Math.floor(duration / 60 / 60) : null);
-		setNewMin(type === "home" ? 
-			Math.floor((duration / 60) - (hours * 60)) : 
-			Math.floor(duration / 60));
-		setSec(type === "home" ? timer -  (newMin * 60 + hours * 60 * 60) : timer - newMin * 60);
-		setMin(type === "home" ? 
-			Math.floor((duration / 60)  - (hours * 60)) : 
-			Math.floor(duration / 60));
+		setHours(newHour);
+		setMin(newMin);
+		setSec(duration - (newMin * 60 + newHour * 60 *60));
+		newHour > 0 ? setShowSec(true) : setShowSec(false);
+		if(newHour === 0) {
+			setShowSec(false)
+		}
 	}, [duration])
 
 	useEffect(() => {
@@ -55,12 +51,18 @@ const Timer = ({
 		}
 		setTimeout(() => {
 			const newTime = timer - 1;
-			const useNewMin = Math.floor(newTime / 60);
-			setMin(useNewMin);
-			setSec(newTime - useNewMin * 60);
 			setTimer(newTime);
+			const newHour = Math.floor(newTime / 60 / 60);
+			const newMin = Math.floor((newTime - (newHour * 60 * 60)) / 60);
+			const newSec = (newTime - ((newHour * 60 * 60) + (newMin * 60)));
+			setHours(newHour);
+			setMin(newMin);
+			setSec(newSec);
 			const progress = 100 - ((duration - newTime ) * 100 / duration);
 			setFill(progress);
+			if(newHour === 0) {
+				setShowSec(false)
+			}
 		}, 1000);
 	}, [timer]);
 
@@ -74,18 +76,16 @@ const Timer = ({
 				rotation={0}
 				backgroundColor={type === "meditation"? "rgba(255,255,255,0.3)": "rgba(255,255,255,0)"}
 			>
-				{
-					() => (
-						<View>
-							{
-								type === "home" ?  <Text style={styles.infoText}>{ text }</Text> : null
-							}
-							<Text style={type === "meditation" ? styles.textColor :  styles.textColor2}>
-								{type === "home" ? hours + " : " : null}{ min } : { sec < 10 ? "0" + sec : sec}
-							</Text>
-						</View>
-					)
-				}
+				{() => (
+					<View>
+						{
+							type === "home" ?  <Text style={styles.infoText}>{ text }</Text> : null
+						}
+						<Text style={type === "meditation" ? styles.textColor :  styles.textColor2}>
+							{ showSec && hours + ":" }{min < 10 ? "0" + min : min }{ !showSec &&  (":" + ( sec < 10 ? "0" + sec : sec)) }
+						</Text>
+					</View>
+				)}
 			</AnimatedCircularProgress>
 		</View>
 	)

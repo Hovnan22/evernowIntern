@@ -20,7 +20,7 @@ const AppNavigationContainer = () => {
 	}, []);
 
 	return (
-		<NavigationContainer >
+		<NavigationContainer>
 			{isReady && (isLoggedIn ? <AppRoot /> : <WelcomeRoot />)}
 		</NavigationContainer>
 	);

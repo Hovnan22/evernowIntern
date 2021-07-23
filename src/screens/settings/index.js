@@ -1,5 +1,4 @@
-import React, 
-{ 
+import React, { 
 	useState, 
 	useCallback,
 } from "react";
@@ -9,16 +8,12 @@ import {
 	Platform,
 	StyleSheet,
 	ActionSheetIOS,
+	Dimensions,
 } from "react-native";
 import { useDispatch } from "react-redux";
-import { useNavigation } from "@react-navigation/native";
 
-import {
-	AppChangeAvatar,
-} from "../../components/settings";
-import {
-	AppWrapper,
-} from "../../components/ui";
+import { AppChangeAvatar } from "../../components/settings";
+import { AppWrapper } from "../../components/ui";
 import {
 	AppSettingsOptions,
 	AppUserInfo,
@@ -27,9 +22,10 @@ import { StorageService } from "../../services";
 import { isLoggedIn } from "../../actions/app";
 import { SETTINGSOPTION } from "../../constants/settings";
 
-const AppSettings = () => {
+const { height } = Dimensions.get("screen")
+
+const AppSettings = ({ navigation }) => {
 	const dispatch = useDispatch();
-	const navigation = useNavigation();
 	const [isAvatarVisible, setIsAvatarVisible] = useState();
 	
 	const logOut = useCallback(async () => {
@@ -51,9 +47,7 @@ const AppSettings = () => {
 			},
 			buttonIndex => {
 				if (buttonIndex === 0) {
-
 				} else if (buttonIndex === 1) {
-
 				} else if (buttonIndex === 2) {
 				}
 			}
@@ -69,7 +63,7 @@ const AppSettings = () => {
 	},[]);
 
 	return (
-		<AppWrapper>
+		<AppWrapper showBackBtn>
 			<View style={styles.container} >
 				<FlatList
 					data={SETTINGSOPTION}
@@ -105,7 +99,7 @@ const AppSettings = () => {
 const styles = StyleSheet.create({
 	container: {
 		width: "100%",
-		height: "100%",
+		height,
 		paddingTop: 110,
 	},
 	seperator: {

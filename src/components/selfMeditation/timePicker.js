@@ -33,32 +33,36 @@ const TimePicker =  ({
 
 	return (
 		<LinearGradient 
-			start={{x: 0, y: 1}} end={{x: 1, y: 1}}
-			colors={["rgba(0, 129, 218, 0.5)" , "rgba(0, 129, 218, 0)"]} 
+			end={{x: 1, y: 1}}
+			start={{x: 0, y: 1}} 
+			colors={["rgba(0, 129, 218, 0.5)", "rgba(0, 129, 218, 0)"]} 
 			style={styles.linearGradient}>
 			<View style={styles.container}>
 				<View style={styles.tmeButtons}>
 					<AppButton
 						press={() => { onChange(0, 30) }}
 						name={"30 Minit"}
-						type="link2"
+						type="whiteLink"
 					/>
 				</View>
 				<View style={styles.tmeButtons}>
 					<AppButton
 						press={() => { onChange(0, 60 ) }}
 						name={"60 Minit"}
-						type="link2"
+						type="whiteLink"
 					/>
 				</View>
 				<View style={styles.tmeButtons}>
 					<AppButton
 						press={showPicerCouser}
 						name={"..."}
-						type={"link2"}
+						type={"whiteLink"}
 					/>
 				</View>
-				<TouchableOpacity style={styles.closeButton} onPress={closeTimePicker }>
+				<TouchableOpacity 
+					style={styles.closeButton}
+					onPress={closeTimePicker}
+				>
 					<AppIcon
 						style={styles.rotate}
 						icon={"arrowDown"}

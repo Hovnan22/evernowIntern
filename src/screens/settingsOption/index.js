@@ -4,7 +4,6 @@ import {
 	FlatList,
 	StyleSheet,
 } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 
 import {
 	AppSettingsOptions,
@@ -14,39 +13,33 @@ import {
 import { AppWrapper } from "../../components/ui";
 import { APPLANGUAGE } from "../../constants/settings";
 
-const AppSetingsOptionScreen = ({ route }) => {
-	const navigation = useNavigation();
-	const { screenName } = route.params;
-
-	return (
-		<AppWrapper navigation={navigation}>
-			{ (screenName === "changeLanguage")  && (
-				<FlatList
-					style={styles.languages}
-					data={APPLANGUAGE}
-					keyExtractor={(_, index) => index.toString()}
-					renderItem={({item}) => (
-						<AppSettingsOptions
-							screenName={screenName}
-							item={item}
-						/>
-					)}
-				/>
-			)}
-			{!(screenName === "changeLanguage") && (
-				<View style={styles.container}>
-					<AppSettingsInputField
+const AppSetingsOptionScreen = ({ route: { params: { screenName } }, navigation }) => (
+	<AppWrapper showBackBtn>
+		{ (screenName === "changeLanguage") ?  (
+			<FlatList
+				style={styles.languages}
+				data={APPLANGUAGE}
+				keyExtractor={(_, index) => index.toString()}
+				renderItem={({item}) => (
+					<AppSettingsOptions
 						screenName={screenName}
+						item={item}
 					/>
-					<AppformSettingsButton
-						timeZon={8}
-						changeEmail={8}
-					/>
-				</View>
-			)}
-		</AppWrapper>
-	);
-};
+				)}
+			/>
+		) : (
+			<View style={styles.container}>
+				<AppSettingsInputField
+					screenName={screenName}
+				/>
+				<AppformSettingsButton
+					timeZon={8}
+					changeEmail={8}
+				/>
+			</View>
+		)}
+	</AppWrapper>
+);
 
 const styles = StyleSheet.create({
 	container: {

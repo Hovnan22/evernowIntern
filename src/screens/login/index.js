@@ -13,9 +13,7 @@ import {
 	AppWrapper,
 	AppFormButtonsBlock,
 } from "../../components/ui";
-import {
-	AppLoginInputField,
-} from "../../components/login";
+import { AppLoginInputField } from "../../components/login";
 import {
 	POLICY_SCREEN,
 	REGISTRATION_SCREEN,
@@ -23,7 +21,6 @@ import {
 } from "../../navigation/screens";
 
 const LoginScreen = () => {
-
 	const dispatch = useDispatch();
 	const navigation = useNavigation();
 	const [email, changeEmail] = useState("user1@example.com");
@@ -65,7 +62,7 @@ const LoginScreen = () => {
 		{
 			name: "Registration",
 			press: goToregistration,
-			type: "link2",
+			type: "whiteLink",
 		},
 		{
 			name: "Privacy Policy",
@@ -75,7 +72,7 @@ const LoginScreen = () => {
 	];
 
 	return (
-		<AppWrapper navigation={navigation}>
+		<AppWrapper showBackBtn>
 			<View style={styles.container}>
 				<AppLoginInputField
 					email={email}
@@ -91,19 +88,6 @@ const LoginScreen = () => {
 };
 
 const styles = StyleSheet.create({
-	whiteBorder: {
-		borderColor: "rgb(255,255,255)",
-	},
-	loginText: {
-		color: "rgb(255,255,255)",
-	},
-	registration: {
-		borderColor: "rgba(0,0,0,0)",
-	},
-	login: {
-		borderColor: "#fff",
-		borderWidth: 2,
-	},
 	container: {
 		width: "100%",
 		height: "100%",

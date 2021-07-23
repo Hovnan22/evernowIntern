@@ -10,6 +10,7 @@ import { AppIcon } from "../ui";
 
 const MeditationItem = ({
 	item,
+	index,
 	getLayouts,
 	pressToMeditation,
 }) => (
@@ -19,15 +20,15 @@ const MeditationItem = ({
 	>
 		<TouchableOpacity 
 			style={styles.button}
-			onPress={() => pressToMeditation(item.index)}
+			onPress={() => pressToMeditation(index)}
 		>
 			<AppIcon
-				icon={item.item.icon}
+				icon={item.icon}
 				width={32}
 				height={32}
 			/>
 			<Text style={styles.name}>
-				{item.item.name}
+				{item.name}
 			</Text>
 		</TouchableOpacity>
 	</View>
