@@ -1,0 +1,10 @@
+export const HOME_SCREEN = "evernow.home";
+export const LOGIN_SCREEN = "evernow.login";
+export const POLICY_SCREEN = "evernow.policy";
+export const WELCOME_SCREEN = "evernpe.welcome";
+export const SETTINGS_SCREEN = "evernow.settings";
+export const MEDITATION_SCREEN = "evernow.meditation";
+export const TAB_NAVIGATION_SCREEN = "evernow.tabNav";
+export const RESTOREPASSWORD_SCREEN = "evernow.restore";
+export const REGISTRATION_SCREEN = "evernow.registration";
+export const SETTINGS_OPTION_SCREEN = "evernow.settingsoption";

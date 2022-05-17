@@ -1,0 +1,81 @@
+import React from "react";
+import {
+	View,
+	Text,
+	Dimensions,
+	StyleSheet,
+	ImageBackground,
+} from "react-native";
+
+import {
+	AppInput,
+	AppButton,
+} from "../ui";
+import whiteBg from "../../../src/assets/images/whiteBg.png";
+
+const { width } = Dimensions.get("window");
+
+const AppLoginInputField = ({
+	email,
+	password,
+	changeEmail,
+	changePassword,
+	restorePassword,
+}) =>  (
+	<View style={styles.inputBlock}>
+		<ImageBackground   source={whiteBg} style={styles.inputBg} resizeMode="stretch" >
+			<Text style={styles.info}>Login</Text>
+			<AppInput
+				styles={styles.email}
+				placeholder="Email"
+				placeholderColor="#005189"
+				changeEvent={changeEmail}
+				textValue={email}
+			/>
+			<AppInput
+				styles={[styles.email, styles.marginVertical]}
+				placeholder="Password"
+				placeholderColor="#005189"
+				changeEvent={changePassword}
+				textValue={password}
+				secureTextEntry={true}
+			/>
+			<AppButton
+				name={"Forgot password"}
+				press={restorePassword}
+				type="link"
+			/>
+		</ImageBackground>
+	</View>
+);
+
+const styles = StyleSheet.create({
+	email: {
+		marginHorizontal: 30,
+		color: "#000",
+		borderBottomWidth: 1,
+		borderColor: "#EDF2FF",
+	},
+	marginVertical: {
+		marginVertical: 30,
+	},
+	inputBlock: {
+		width: width -  60,
+		marginTop: 100,
+		marginHorizontal: 30,
+	},
+	inputBg: {
+		position: "absolute",
+		top: 0,
+		width: "100%",
+		height: 380,
+		zIndex: 5,
+	},
+	info: {
+		fontSize: 16,
+		marginLeft: 30,
+		marginVertical: 25,
+	},
+});
+
+export default AppLoginInputField;

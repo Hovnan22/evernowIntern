@@ -1,8 +1,11 @@
-import { LOGIN } from "../redux/types";
+import { LOGIN, SET_STATUSBAR_STYLE } from "./types";
 
-export default isLoggedIn = (LogedStatus) => {
-    return {
-        type: LOGIN,
-        payload: LogedStatus
-    }
-}
+export const  isLoggedIn = LogedStatus => ({
+	type: LOGIN,
+	payload: LogedStatus,
+});
+
+export const  setStatusBarStyle = statusBarStyle => ({
+	type: SET_STATUSBAR_STYLE,
+	payload: statusBarStyle,
+});
